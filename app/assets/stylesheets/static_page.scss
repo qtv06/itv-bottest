@@ -1,0 +1,23 @@
+.footer{
+  .main-footer{
+    width: 60%;
+    margin: 0px auto;
+    ul{
+      li{
+        float: left;;
+        padding: 5px 10px;
+        list-style: none;
+        a:hover{
+          text-decoration: none;
+        }
+      }
+    }
+    .sologan{
+      width: 44%;
+      height: 31px;
+      text-align: center;
+      margin: 0px auto;
+      margin-top: 30px;
+    }
+  }
+}
