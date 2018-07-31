@@ -1,2 +1,27 @@
-<h1>TestSuits#index</h1>
-<p>Find me in app/views/test_suits/index.html.erb</p>
+<div class="add-folder-img">
+  <%= link_to image_tag("icon-add-folder"), new_test_suit_path %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Web Test Suites</th>
+      <th>Edit</th>
+      <th>Run</th>
+      <th>Export</th>
+      <th>Duplicate</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test_suites.each do |t_suite| %>
+      <tr>
+        <td><span class="icon-folder"></span><%= t_suite.name %></td>
+        <td><%= link_to "", edit_test_suit_path(t_suite), class: "glyphicon glyphicon-pencil" %></td>
+        <td><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+        <td><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+        <td><%= link_to "", "#", class: "fa fa-clone" %></td>
+        <td><%= link_to "", t_suite, method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

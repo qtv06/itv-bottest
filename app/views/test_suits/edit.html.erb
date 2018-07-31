@@ -1,2 +1,16 @@
-<h1>TestSuits#edit</h1>
-<p>Find me in app/views/test_suits/edit.html.erb</p>
+<%= form_for @test_suit do |f| %>
+  <div class="btn-action">
+    <%= f.submit "", class: "btn-save btn-icon" %>
+    <%= link_to "", new_test_suit_path, class: "btn-add btn-icon" %>
+    <%= link_to "", "#", class: "btn-share btn-icon" %>
+    <%= link_to "", "#", class: "btn-notification btn-icon" %>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-sm-4 label">
+      <%= f.label "Test Suit Name" %>
+    </div>
+    <div class="col-md-4 col-sm-6 input-test-suite">
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+<% end %>

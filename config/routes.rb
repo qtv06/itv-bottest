@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :test_suits
   resources :users
 
-  root "users#index"
+  root "test_suits#index"
 end
