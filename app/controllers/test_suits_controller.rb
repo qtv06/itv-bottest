@@ -1,5 +1,6 @@
 class TestSuitsController < ApplicationController
   def index
+
   end
 
   def edit
