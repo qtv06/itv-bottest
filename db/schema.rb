@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_171504) do
+ActiveRecord::Schema.define(version: 2018_08_01_041309) do
 
   create_table "actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "test_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "test_suit_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_suit_id"], name: "index_test_cases_on_test_suit_id"
+    t.index ["user_id"], name: "index_test_cases_on_user_id"
   end
 
   create_table "test_suits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,5 +45,7 @@ ActiveRecord::Schema.define(version: 2018_07_30_171504) do
     t.string "email"
   end
 
+  add_foreign_key "test_cases", "test_suits"
+  add_foreign_key "test_cases", "users"
   add_foreign_key "test_suits", "users"
 end

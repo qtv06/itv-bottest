@@ -1,0 +1,107 @@
+<%= render "form" %>
+<div class="row">
+  <div class="btn-add-step btn btn-primary">Add Step</div>
+</div>
+<ul data-behavior="list-users"></ul>
+<script>
+  var listUser;
+  $(document).ready(function(){
+  // gon.users.forEach(function(val){
+  //   li = document.createElement('li');
+  //   // li.set
+  //   li.innerHTML= val.name;
+  //   li.setAttribute("class", "item-user");
+  //   ul.append(li);
+  // });
+    listUser = gon.users;
+    initItem();
+    $('body').on('click','.btn-primary', function(event){
+      initItem();
+    });
+  });
+  function initItem(){
+    var ul = $("[data-behavior='list-users']");
+    var li = document.createElement("li");
+    li.setAttribute("class", "item-step");
+
+    var rowDiv = document.createElement("div");
+    rowDiv.setAttribute("class", " row step");
+
+    var stepNameDiv = document.createElement("div");
+    stepNameDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+
+    var stepNameLabel = document.createElement("label");
+    var stepNameText = document.createTextNode("Step name");
+
+    stepNameLabel.appendChild(stepNameText);
+
+    stepNameTextBox = document.createElement("input");
+    stepNameTextBox.setAttribute("class", "form-control")
+    stepNameTextBox.setAttribute("type", "text");
+
+    stepNameDiv.appendChild(stepNameLabel);
+    stepNameDiv.appendChild(stepNameTextBox);
+    rowDiv.appendChild(stepNameDiv);
+
+    //create div box action
+    var actionDiv = document.createElement("div");
+    actionDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+    // create lable action
+    var lableAction = document.createElement("label");
+    var textAction = document.createTextNode("Action: ");
+
+    lableAction.appendChild(textAction);
+    actionDiv.appendChild(lableAction);
+    // create select action
+    var selectAction = document.createElement("select");
+    selectAction.setAttribute("class", "select2_single form-control");
+    selectAction.setAttribute("name", "action");
+
+    var firstOp = document.createElement("option");
+    firstOp.setAttribute("value", "");
+    var firstOpText = document.createTextNode("Choose Action");
+    firstOp.appendChild(firstOpText);
+
+    selectAction.appendChild(firstOp);
+
+    listUser.forEach(function(user){
+      var itemOp = document.createElement("option");
+      itemOp.setAttribute("value", user.id);
+      var textItemOp = document.createTextNode(user.name);
+      itemOp.appendChild(textItemOp);
+      selectAction.appendChild(itemOp);
+    });
+
+    //add selectAction to div Action
+    actionDiv.appendChild(selectAction);
+    rowDiv.appendChild(actionDiv);
+
+
+    //add 2 button
+    var buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "btn-action col-sm-12 col-md-2");
+
+    var buttonDrag = document.createElement('div');
+    buttonDrag.setAttribute("class", "btn-action-drag");
+    var iconDrag = document.createElement("i");
+    iconDrag.setAttribute("class", "fa fa-arrows fa-2x");
+    buttonDrag.appendChild(iconDrag);
+
+    var buttonDrop = document.createElement('div');
+    buttonDrop.setAttribute("class", "btn-action-drop");
+    var iconDrop = document.createElement("i");
+    iconDrop.setAttribute("class", "fa fa-trash fa-2x");
+    buttonDrop.appendChild(iconDrop);
+
+    buttonDiv.appendChild(buttonDrag);
+    buttonDiv.appendChild(buttonDrop);
+
+    rowDiv.appendChild(buttonDiv);
+    //add rowDiv to li
+    li.appendChild(rowDiv);
+    ul.append(li);
+  }
+
+</script>

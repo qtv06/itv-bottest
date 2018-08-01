@@ -1,12 +1,13 @@
 <%= form_for @test_suit do |f| %>
   <div class="btn-action">
-    <%= f.submit "", class: "btn-save btn-icon" %>
-    <%= link_to "", new_test_suit_path, class: "btn-add btn-icon" %>
-    <%= link_to "", "#", class: "btn-share btn-icon" %>
-    <%= link_to "", "#", class: "btn-notification btn-icon" %>
+    <%= link_to "", url_for(:back), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= f.submit "", class: "btn-save btn-icon", "data-toggle" => "tooltip", title: "Save Test Suit" %>
+    <%= link_to "", new_test_suit_test_case_path(@test_suit), class: "btn-add btn-icon", "data-toggle" => "tooltip", title: "Add Test Case" %>
+    <%= link_to "", "#", class: "btn-share btn-icon", "data-toggle" => "tooltip", title: "Share Test Case" %>
+    <%= link_to "", "#", class: "btn-notification btn-icon", "data-toggle" => "tooltip", title: "Notifications" %>
   </div>
   <div class="row">
-    <div class="col-md-2 col-sm-4 label">
+    <div class="col-md-2 col-sm-4 label-test-suit">
       <%= f.label "Test Suit Name" %>
     </div>
     <div class="col-md-4 col-sm-6 input-test-suite">
@@ -14,3 +15,28 @@
     </div>
   </div>
 <% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Test Cases</th>
+      <th>Edit</th>
+      <th>Run</th>
+      <th>Export</th>
+      <th>Duplicate</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test_suit.test_cases.each do |t_case| %>
+      <tr>
+        <td><span class="icon-file"></span><%= t_case.name %></td>
+        <td><%= link_to "", edit_test_suit_test_case_path(@test_suit, t_case), class: "glyphicon glyphicon-pencil" %></td>
+        <td><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+        <td><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+        <td><%= link_to "", "#", class: "fa fa-clone" %></td>
+        <td><%= link_to "", test_suit_test_case_path(@test_suit, t_case), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

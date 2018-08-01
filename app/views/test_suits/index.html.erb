@@ -15,7 +15,7 @@
   <tbody>
     <% @test_suites.each do |t_suite| %>
       <tr>
-        <td><span class="icon-folder"></span><%= t_suite.name %></td>
+        <td><span class="icon-folder"></span><%= link_to t_suite.name, edit_test_suit_path(t_suite) %></td>
         <td><%= link_to "", edit_test_suit_path(t_suite), class: "glyphicon glyphicon-pencil" %></td>
         <td><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
         <td><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
