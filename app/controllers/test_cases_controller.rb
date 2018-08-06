@@ -25,7 +25,28 @@ class TestCasesController < ApplicationController
   def show
   end
 
-  def edit; end
+  def edit
+    lsTestAction = []
+    lsTestScript = []
+    @test_actions = TestAction.all
+    @test_actions.each do |t|
+      objTest = {}
+      objTest["data"] = t
+      objTest["params"] = t.params
+      lsTestAction << objTest
+    end
+
+    @test_scripts = TestScript.where("test_case_id = ?", @test_case.id)
+    @test_scripts.each do |s|
+      objScript = {}
+      objScript["data"] = s
+      objScript["text_value"] = TestValue.find_by test_script_id: s.id
+      lsTestScript.push(objScript)
+    end
+    gon.test_actions = lsTestAction
+    gon.tcId = @test_case.id
+    gon.test_scripts =lsTestScript
+  end
 
   def update
     if @test_case.update testcase_params

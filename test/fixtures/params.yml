@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  age: 1
-  address: MyString
+  test_action: one
+  param-type: MyString
 
 two:
   name: MyString
-  age: 1
-  address: MyString
+  test_action: two
+  param-type: MyString

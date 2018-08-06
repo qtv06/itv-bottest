@@ -84,7 +84,17 @@ span.icon-file {
   font-weight: unset;
   font-size: 17px;
   opacity: 0.8;
+  font-weight: 100;
 }
 .btn-add-step{
   margin-left: 15px;
+}
+li.item-step {
+  list-style: none;
+  padding: 5px 5px 0px 20px;
+  border-bottom:  1px solid #e4e4e4;
+}
+ul.list-step{
+  margin-top: 20px;
+  margin-left: -38px;
 }

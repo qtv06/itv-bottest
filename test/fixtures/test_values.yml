@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_script_id: 1
+  test_action_id: 1
+  param_id: 1
+  value: MyString
+
+two:
+  test_script_id: 1
+  test_action_id: 1
+  param_id: 1
+  value: MyString

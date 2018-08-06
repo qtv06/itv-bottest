@@ -24,7 +24,5 @@ $(document).on('turbolinks:load', function() {
   //     }
   //   }
   // });
-  $('.select2_single').select2({
-    maximumSelectionLength: 3
-  });
+  $('.col-md-2 .select2_single').select2({});
 });
