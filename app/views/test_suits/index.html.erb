@@ -13,15 +13,17 @@
     </tr>
   </thead>
   <tbody>
-    <% @test_suites.each do |t_suite| %>
-      <tr>
-        <td><span class="icon-folder"></span><%= link_to t_suite.name, edit_test_suit_path(t_suite) %></td>
-        <td><%= link_to "", edit_test_suit_path(t_suite), class: "glyphicon glyphicon-pencil" %></td>
-        <td><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
-        <td><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
-        <td><%= link_to "", "#", class: "fa fa-clone" %></td>
-        <td><%= link_to "", t_suite, method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
-      </tr>
+    <% if @test_suites.any? %>
+      <% @test_suites.each do |t_suite| %>
+        <tr>
+          <td><span class="icon-folder"></span><%= link_to t_suite["name"], edit_test_suit_path(id: t_suite["id"]) %></td>
+          <td><%= link_to "", edit_test_suit_path(id: t_suite["id"]), class: "glyphicon glyphicon-pencil" %></td>
+          <td><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+          <td><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+          <td><%= link_to "", "#", class: "fa fa-clone" %></td>
+          <td><%= link_to "", test_suit_path(id: t_suite["id"]), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
