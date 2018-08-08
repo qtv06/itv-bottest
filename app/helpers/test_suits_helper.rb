@@ -12,7 +12,7 @@ module TestSuitsHelper
       }
     end
 
-    File.open("lib/xml/test_suits.xml", "r+") do |file|
+    File.open("lib/xml/test_suits/test_suits.xml", "w+") do |file|
       file << builder.to_xml
     end
   end

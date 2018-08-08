@@ -1,3 +1,18 @@
 // Place all the styles related to the TestCases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+li.head-step {
+  height:  50px;
+  list-style:  none;
+  border-bottom: 1px solid #e4e4e4;
+  vertical-align:  bottom;
+  padding-top: 20px;
+  .col-md-10{
+    padding: 0px !important;
+  }
+}
+.col-md-2.action-icon ul li:not(first) {
+  float:  left;
+  padding-left: 13px;
+  list-style:  none;
+}

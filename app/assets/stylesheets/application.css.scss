@@ -31,6 +31,7 @@ body{
 }
 .btn-action-drag, .btn-action-drop{
   line-height: 68px;
+  margin-left: 48px;
 }
 .btn-action-drag {
   float:  left;
@@ -42,7 +43,10 @@ body{
   margin: 0px;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
-
+.btn-action.col-sm-12.col-md-2 {
+    float: right;
+    text-align:  center;
+}
 .active{
   background-color: none;
   border-bottom: 2px solid black;
@@ -50,10 +54,12 @@ body{
 .navbar-inverse .navbar-nav > li > a:hover{
   color: blue;
 }
-.main{
+.main {
   min-height: 550px;
   padding: 20px 0px;
   margin-top: 52px;
+  width: 80%;
+  margin: 52px auto;
 }
 .footer{
   padding: 10px;
@@ -86,4 +92,7 @@ a.navbar-brand {
   height: 3px;
   background-repeat: repeat;
   background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.mg-20{
+  margin-top: 20px;
 }

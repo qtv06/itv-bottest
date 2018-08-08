@@ -12,8 +12,7 @@
 
   <body>
     <%= render "shared/header" %>
-    <div class="container">
-      <div class="main">
+    <div class="main">
       <% if flash.any? %>
       <script type="text/javascript">
         <% flash.each do |k, v| %>
@@ -23,8 +22,8 @@
       </script>
       <% end %>
         <%= yield %>
-      </div>
     </div>
+    <%= debug(params) if Rails.env.development? %>
     <%= render "shared/footer" %>
   </body>
 </html>

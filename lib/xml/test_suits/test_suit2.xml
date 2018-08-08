@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuit>
+  <TestCases>
+    <TestCase>
+      <Id>2</Id>
+      <Name>Choce store</Name>
+      <CreatedAt/>
+    </TestCase>
+    <TestCase>
+      <Id>1</Id>
+      <Name>Pick a address</Name>
+      <CreatedAt/>
+    </TestCase>
+    <TestCase>
+      <Id>3</Id>
+      <Name>Adipisci nemo sunt voluptas.</Name>
+      <CreatedAt>2018-08-08 09:16:33 UTC</CreatedAt>
+    </TestCase>
+  </TestCases>
+</TestSuit>
