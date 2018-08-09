@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Actions>
+  <Action>
+    <Id>1</Id>
+    <Name>Click</Name>
+  </Action>
+  <Action>
+    <Id>2</Id>
+    <Name>Write Text</Name>
+  </Action>
+  <Action>
+    <Id>3</Id>
+    <Name>Go to URL</Name>
+  </Action>
+  <Action>
+    <Id>4</Id>
+    <Name>Select Options</Name>
+  </Action>
+  <Action>
+    <Id>5</Id>
+    <Name>Right Click</Name>
+  </Action>
+  <Action>
+    <Id>6</Id>
+    <Name>Add Assertion</Name>
+  </Action>
+</Actions>

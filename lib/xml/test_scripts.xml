@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScripts>
+  <TestScript>
+    <TestActionId>1</TestActionId>
+    <TestCaseId>3</TestCaseId>
+    <Id>1</Id>
+    <ParamId>1</ParamId>
+    <Name>asd</Name>
+    <Value>asd</Value>
+    <Text>asd</Text>
+  </TestScript>
+  <TestScript>
+    <TestActionId>1</TestActionId>
+    <TestCaseId>3</TestCaseId>
+    <Id>1</Id>
+    <ParamId>1</ParamId>
+    <Name>qwe</Name>
+    <Value>qwe</Value>
+    <Text>qwe</Text>
+  </TestScript>
+</TestScripts>

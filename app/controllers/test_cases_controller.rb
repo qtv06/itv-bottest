@@ -5,7 +5,7 @@ class TestCasesController < ApplicationController
   before_action :find_test_suit
   before_action :read_test_cases_of_test_suit, except: %i(index new)
   before_action :find_test_case, only: %i(edit update destroy)
-
+  before_action :read_action, only: :edit
   def index
   end
 
@@ -44,27 +44,38 @@ class TestCasesController < ApplicationController
   end
 
   def edit
-    lsTestAction = []
+    # lsTestAction = []
     lsTestScript = []
-    @test_actions = []
-    @test_actions.each do |t|
-      objTest = {}
-      objTest["data"] = t
-      objTest["params"] = t.params
-      lsTestAction << objTest
-    end
+    # @test_actions = []
+    # @test_actions.each do |t|
+    #   objTest = {}
+    #   objTest["data"] = t
+    #   objTest["params"] = t.params
+    #   lsTestAction << objTest
+    # end
 
-    @test_scripts = TestScript.where("test_case_id = ?", @test_case.id)
-    @test_scripts.each do |s|
+    doc_script = Nokogiri::XML(File.open("lib/xml/test_scripts.xml"));
+
+    doc_script.xpath("//TestScript").each do |script|
       objScript = {}
-      objScript["data"] = s
-      objScript["text_value"] = TestValue.find_by test_script_id: s.id
-      lsTestScript.push(objScript)
-    end
-    gon.test_actions = lsTestAction
-    gon.tcId = @test_case.id
-    gon.test_scripts =lsTestScript
+      objScript["name"] = script.at_xpath("Name").text
+      objScript["action_id"] = script.at_xpath("TestActionId").text
+      objScript["param_id"] = script.at_xpath("ParamId").text
+      objScript["id"] = script.at_xpath("Id").text
+      objScript["value"] = script.at_xpath("Value").text
+      objScript["text"] = script.at_xpath("Text").text
 
+      lsTestScript << objScript
+    end
+    # @test_scripts.each do |s|
+    #   objScript = {}
+    #   objScript["data"] = s
+    #   objScript["text_value"] = TestValue.find_by test_script_id: s.id
+    #   lsTestScript.push(objScript)
+    # end
+    gon.test_actions = @test_actions
+    gon.tcId = @test_case.id
+    gon.test_scripts = lsTestScript
   end
 
   def update

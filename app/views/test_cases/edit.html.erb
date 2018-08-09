@@ -50,20 +50,21 @@
         var nameTestScript = row.children[0].children[1].value;
         var idTestAction = row.children[1].children[1].value;
         var idTestCase = gon.tcId;
-        var description = "";
         var param_id = "";
         var value = "";
-        if(row.children.length == 5){
+        var text = "";
+        if(row.children.length == 6){
           param_id = row.children[3].children[1].value;
           value = row.children[4].children[1].value;
+          text = row.children[5].children[1].value;
         }
         var obj = {};
         obj["nameTestScript"] = nameTestScript;
         obj["idTestAction"] = idTestAction;
         obj["idTestCase"] = idTestCase;
-        obj["description"] = description;
         obj["param_id"] = param_id;
         obj["value"] = value;
+        obj["text"] = text;
 
         listScript.push(obj);
         console.log(obj);
@@ -121,7 +122,7 @@
     actionDiv.appendChild(lableAction);
     // create select action
     var selectAction = document.createElement("select");
-    selectAction.setAttribute("class", "select2_single form-control");
+    selectAction.setAttribute("class", " form-control");
     selectAction.setAttribute("name", "action");
 
     var firstOp = document.createElement("option");
@@ -132,7 +133,7 @@
     selectAction.appendChild(firstOp);
 
     listActionTest.forEach(function(item){
-      var test_action = item.data;
+      var test_action = item["data"];
       var itemOp = document.createElement("option");
       itemOp.setAttribute("value", test_action.id);
       var textItemOp = document.createTextNode(test_action.name);
@@ -181,9 +182,23 @@
         var row = event.target.parentElement.parentElement;
         // var id_test_action =
         var divSelectAction = row.children[1].children;
-
-        generate_item_for_test_action(divSelectAction[1].value, row);
+        params = getParams(listActionTest, divSelectAction[1].value);
+        if(params.length > 0){
+          generate_item_for_test_action(divSelectAction[1].value, row);
+        }else{
+          reloadElement(row, 0);
+          generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
+        }
     });
+  }
+  function getParams(lsAction, idAction){
+    params = []
+    lsAction.forEach(function(item){
+      if(item["data"]["id"] == idAction){
+        params = item["params"];
+      }
+    });
+    return params;
   }
   function reloadElement(rowitem, level){
     var checkPoint = level + 3;
@@ -216,7 +231,7 @@
     paramsSelect.appendChild(labelParamsSelect);
 
     var optionParams = document.createElement("select");
-    optionParams.setAttribute("class", "form-control select2_single");
+    optionParams.setAttribute("class", "form-control ");
     var firstOpParams = document.createElement("option");
     firstOpParams.setAttribute("value", "");
     var firstOpParamsText = document.createTextNode("Choose locator");
@@ -237,11 +252,14 @@
     row.appendChild(paramsSelect);
     optionParams.addEventListener("change", function(event){
       var param_name = optionParams.options[optionParams.selectedIndex].text;
+      reloadElement(row, 1);
       generate_item_for_params(row, param_name);
+      reloadElement(row, 2);
+      generate_item_for_params(row, "Text to Write");
     });
   }
+
   function generate_item_for_params(row, param_name){
-    reloadElement(row, 1);
     var divInputParams = document.createElement("div");
     divInputParams.setAttribute("class", "col-md-2");
 
@@ -261,10 +279,10 @@
 
     row.appendChild(divInputParams);
   }
+
   function generate_test_script_for_test_case() {
     // body...
     test_script_list.forEach(function(item_script){
-      var item_test_script = item_script["data"];
       var values = item_script["text_value"];
       var li = document.createElement("li");
       li.setAttribute("class", "item-step");
@@ -284,7 +302,7 @@
       stepNameTextBox = document.createElement("input");
       stepNameTextBox.setAttribute("class", "form-control")
       stepNameTextBox.setAttribute("type", "text");
-      stepNameTextBox.setAttribute("value", item_test_script.name);
+      stepNameTextBox.setAttribute("value", item_script["name"]);
 
       stepNameDiv.appendChild(stepNameLabel);
       stepNameDiv.appendChild(stepNameTextBox);
@@ -302,7 +320,7 @@
       actionDiv.appendChild(lableAction);
       // create select action
       var selectAction = document.createElement("select");
-      selectAction.setAttribute("class", "select2_single form-control");
+      selectAction.setAttribute("class", " form-control");
       selectAction.setAttribute("name", "action");
 
       var firstOp = document.createElement("option");
@@ -318,7 +336,7 @@
         itemOp.setAttribute("value", test_action.id);
         var textItemOp = document.createTextNode(test_action.name);
         itemOp.appendChild(textItemOp);
-        if(item_test_script.test_action_id == test_action.id){
+        if(item_script["action_id"] == test_action.id){
           itemOp.setAttribute("selected", "true");
         }
         selectAction.appendChild(itemOp);
@@ -350,6 +368,51 @@
 
       rowDiv.appendChild(buttonDiv);
 
+      if(item_script["param_id"] != ""){
+        var paramDiv = document.createElement("div");
+        paramDiv.setAttribute("class", "col-md-2 form-group");
+
+        var params = getParams(listActionTest, item_script["action_id"]);
+        var nameParam = "";
+        params.forEach(function(param){
+          if(param.id == item_script["param_id"]){
+            nameParam = param.name;
+          }
+        });
+
+        var labelParam = document.createElement("label");
+        var textLabel = document.createTextNode("Locate Element By: ");
+        labelParam.appendChild(textLabel);
+        paramDiv.appendChild(labelParam);
+
+        selectParam = document.createElement("select");
+        selectParam.setAttribute("class", " form-control");
+
+        params.forEach(function(param){
+          optionParam = document.createElement("option");
+          optionParam.setAttribute("value", param.id);
+          textOption = document.createTextNode(param.name);
+          optionParam.appendChild(textOption);
+          if(param.id == item_script["param_id"]){
+            optionParam.setAttribute("selected", "true");
+          }
+          selectParam.appendChild(optionParam);
+        });
+
+        paramDiv.appendChild(selectParam);
+        rowDiv.appendChild(paramDiv);
+        if(item_script["value"] != ""){
+          generate_value_for_param(nameParam, item_script["value"], rowDiv);
+          generate_value_for_param("Text to Write", item_script["text"], rowDiv);
+        }
+        selectParam.addEventListener("change", function(event){
+          var param_name = selectParam.options[selectParam.selectedIndex].text;
+          reloadElement(rowDiv, 1);
+          generate_item_for_params(rowDiv, param_name);
+          reloadElement(rowDiv, 2);
+          generate_item_for_params(rowDiv, "Text to Write");
+        });
+      }
       // generate params
 
       //add rowDiv to li
@@ -368,10 +431,32 @@
           var row = event.target.parentElement.parentElement;
           // var id_test_action =
           var divSelectAction = row.children[1].children;
-
-          generate_item_for_test_action(divSelectAction[1].value, row);
+          params = getParams(listActionTest, divSelectAction[1].value);
+          if(params.length > 0){
+            generate_item_for_test_action(divSelectAction[1].value, row);
+          }else{
+            reloadElement(row, 0);
+            generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
+          }
       });
     });
+  }
+  function generate_value_for_param(name, value, row){
+    var valueDiv = document.createElement("div");
+    valueDiv.setAttribute("class", "col-md-2 form-group");
+
+    var labelValue = document.createElement("label");
+    var labelValueText = document.createTextNode(name + ":");
+    labelValue.appendChild(labelValueText);
+    valueDiv.appendChild(labelValue);
+
+    var inputValue = document.createElement("input");
+    inputValue.setAttribute("value", value);
+    inputValue.setAttribute("class", "form-control");
+    inputValue.setAttribute("type", "text");
+    valueDiv.appendChild(inputValue);
+
+    row.appendChild(valueDiv);
   }
 
 </script>
