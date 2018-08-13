@@ -14,15 +14,6 @@ class TestCasesController < ApplicationController
   end
 
   def create
-    # @test_case = @test_suit.test_cases.build(testcase_params)
-    # @test_case.user = current_user
-    # if @test_case.save
-    #   flash[:success] = I18n.t "flash.add-success"
-    #   redirect_to edit_test_suit_path(@test_suit)
-    # else
-    #   flash[:danger] = I18n.t "flash.danger"
-    #   render :new
-    # end
     @test_case = TestCase.new
     name = params[:test_case][:name]
     if !name.blank?
@@ -44,15 +35,7 @@ class TestCasesController < ApplicationController
   end
 
   def edit
-    # lsTestAction = []
     lsTestScript = []
-    # @test_actions = []
-    # @test_actions.each do |t|
-    #   objTest = {}
-    #   objTest["data"] = t
-    #   objTest["params"] = t.params
-    #   lsTestAction << objTest
-    # end
     file_script = "test_script#{@test_suit.id}#{@test_case.id}.xml"
     doc_script = Nokogiri::XML(File.open("lib/xml/test_scripts/#{file_script}", "a+"));
 
@@ -66,12 +49,6 @@ class TestCasesController < ApplicationController
 
       lsTestScript << objScript
     end
-    # @test_scripts.each do |s|
-    #   objScript = {}
-    #   objScript["data"] = s
-    #   objScript["text_value"] = TestValue.find_by test_script_id: s.id
-    #   lsTestScript.push(objScript)
-    # end
     gon.test_suit_id = @test_suit.id
     gon.test_actions = @test_actions
     gon.tcId = @test_case.id

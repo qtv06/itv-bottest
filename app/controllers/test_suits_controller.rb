@@ -25,9 +25,6 @@ class TestSuitsController < ApplicationController
       @test_suites << test_suit
       write_test_suite_to_file_xml @test_suites
       file_test_suit = test_suit['id'] + ".xml"
-      # File.open("lib/xml/test_suits/file_test_suit", "w+") do |f|
-
-      # end
       flash[:success] = "#{test_suit["name"]} Added Successfully!!"
     else
       flash[:danger] = "Some thing wrong!"
