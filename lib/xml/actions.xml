@@ -3,25 +3,31 @@
   <Action>
     <Id>1</Id>
     <Name>Click</Name>
+    <HaveText>0</HaveText>
   </Action>
   <Action>
     <Id>2</Id>
     <Name>Write Text</Name>
+    <HaveText>1</HaveText>
   </Action>
   <Action>
     <Id>3</Id>
     <Name>Go to URL</Name>
+    <HaveText>0</HaveText>
   </Action>
   <Action>
     <Id>4</Id>
     <Name>Select Options</Name>
+    <HaveText>1</HaveText>
   </Action>
   <Action>
     <Id>5</Id>
     <Name>Right Click</Name>
+    <HaveText>0</HaveText>
   </Action>
   <Action>
     <Id>6</Id>
     <Name>Add Assertion</Name>
+    <HaveText>0</HaveText>
   </Action>
 </Actions>

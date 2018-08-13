@@ -13,8 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    <% if @test_suites.any? %>
-      <% @test_suites.each do |t_suite| %>
+    <% if @test_suit_of_user.any? %>
+      <% @test_suit_of_user.each do |t_suite| %>
         <tr>
           <td><span class="icon-folder"></span><%= link_to t_suite["name"], edit_test_suit_path(id: t_suite["id"]) %></td>
           <td><%= link_to "", edit_test_suit_path(id: t_suite["id"]), class: "glyphicon glyphicon-pencil" %></td>

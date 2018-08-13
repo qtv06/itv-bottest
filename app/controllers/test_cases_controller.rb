@@ -53,15 +53,14 @@ class TestCasesController < ApplicationController
     #   objTest["params"] = t.params
     #   lsTestAction << objTest
     # end
-
-    doc_script = Nokogiri::XML(File.open("lib/xml/test_scripts.xml"));
+    file_script = "test_script#{@test_suit.id}#{@test_case.id}.xml"
+    doc_script = Nokogiri::XML(File.open("lib/xml/test_scripts/#{file_script}", "a+"));
 
     doc_script.xpath("//TestScript").each do |script|
       objScript = {}
       objScript["name"] = script.at_xpath("Name").text
       objScript["action_id"] = script.at_xpath("TestActionId").text
       objScript["param_id"] = script.at_xpath("ParamId").text
-      objScript["id"] = script.at_xpath("Id").text
       objScript["value"] = script.at_xpath("Value").text
       objScript["text"] = script.at_xpath("Text").text
 
@@ -73,9 +72,11 @@ class TestCasesController < ApplicationController
     #   objScript["text_value"] = TestValue.find_by test_script_id: s.id
     #   lsTestScript.push(objScript)
     # end
+    gon.test_suit_id = @test_suit.id
     gon.test_actions = @test_actions
     gon.tcId = @test_case.id
     gon.test_scripts = lsTestScript
+    gon.action_have_text = @action_have_text
   end
 
   def update
@@ -101,7 +102,9 @@ class TestCasesController < ApplicationController
   def destroy
     if @test_cases.delete(@test_case)
       write_test_case_to_file_xml(@test_cases, @test_suit.id)
-      flash[:success] = I18n.t "Test case #{name} successfully deleted"
+      path_file_script = "lib/xml/test_scripts/test_script#{@test_suit.id}#{@test_case.id}.xml"
+      File.delete(path_file_script) if File.exist?(path_file_script)
+      flash[:success] = I18n.t "Test case #{@test_case.name} successfully deleted"
     else
       flash[:danger] = I18n.t "flash.danger"
     end

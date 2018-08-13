@@ -32,10 +32,14 @@
 </div>
 <script>
   var listActionTest;
-  var test_script_list= gon.test_scripts;
+  var test_script_list = gon.test_scripts;
+  var action_have_text = gon.action_have_text ;
+  var ul = $("[data-behavior='list-users']");
   $(document).ready(function(){
     listActionTest = gon.test_actions;
-    generate_test_script_for_test_case();
+    if(test_script_list.length > 0){
+      generate_test_script_for_test_case();
+    }
     // initItem();
     $('.main').on('click','.btn-add-step', function(event){
       initItem();
@@ -43,20 +47,42 @@
     $('.main').on('click', '.btn-save-test-script', function(event) {
       // event.preventDefault();
       /* Act on the event */
+      var count_check = 0;
       var listStep = $('.step');
       var listScript = [];
       for(var i = 0; i < listStep.length; i++){
         var row = listStep[i];
         var nameTestScript = row.children[0].children[1].value;
+        if(check_input(nameTestScript, row.children[0]) == false){
+          count_check += 1;
+        }
         var idTestAction = row.children[1].children[1].value;
+        if(check_input(idTestAction, row.children[1]) == false){
+          count_check += 1;
+        }
         var idTestCase = gon.tcId;
         var param_id = "";
         var value = "";
         var text = "";
+        if(row.children.length == 4){
+          value = row.children[3].children[1].value;
+          if(check_input(value, row.children[3]) == false){
+          count_check += 1;
+        }
+        }
         if(row.children.length == 6){
           param_id = row.children[3].children[1].value;
+          if(check_input(param_id, row.children[3]) == false){
+            count_check += 1;
+          }
           value = row.children[4].children[1].value;
+          if(check_input(value, row.children[4]) == false){
+            count_check += 1;
+          }
           text = row.children[5].children[1].value;
+          if(check_input(text, row.children[5]) == false){
+            count_check += 1;
+          }
         }
         var obj = {};
         obj["nameTestScript"] = nameTestScript;
@@ -67,25 +93,28 @@
         obj["text"] = text;
 
         listScript.push(obj);
-        console.log(obj);
       }
-      $.ajax({
-        url: '/test_scripts/create',
-        type: 'get',
-        data: {
-          'test_case_id': gon.tcId,
-          'lsTestScript': listScript
-        },
-        success : function(data){
-          alert(data);
-        }
-      });
+      if(count_check > 0){
+        alert("Please fill in all field!");
+      }else{
+        $.ajax({
+          url: '/test_scripts/create',
+          type: 'get',
+          data: {
+            'test_suit_id': gon.test_suit_id,
+            'test_case_id': gon.tcId,
+            'lsTestScript': listScript
+          },
+          success : function(data){
+            alert(data);
+          }
+        });
+      }
 
-      console.log(listScript);
     });
     $("[data-behavior='list-users']").sortable();
   });
-  var ul = $("[data-behavior='list-users']");
+
   function initItem(){
     var li = document.createElement("li");
     li.setAttribute("class", "item-step");
@@ -98,7 +127,7 @@
 
 
     var stepNameLabel = document.createElement("label");
-    var stepNameText = document.createTextNode("Step name");
+    var stepNameText = document.createTextNode("Step name:");
 
     stepNameLabel.appendChild(stepNameText);
 
@@ -210,6 +239,19 @@
       }
     }
   }
+  function check_input(value, item){
+    if(value == ""){
+      item.children[1].setAttribute("placeholder", "Please enter a value");
+      item.children[0].setAttribute("class", "unvalid-text");
+      item.children[1].setAttribute("class", "form-control unvalid-input");
+      return false;
+    }else{
+      item.children[0].classList.remove("unvalid-text");
+      item.children[1].classList.remove("unvalid-input");
+    }
+
+    return true;
+  }
   function generate_item_for_test_action(test_action_id, row){
     var lsParams = [];
     listActionTest.forEach(function(item){
@@ -219,7 +261,6 @@
         lsParams = item_parmas_test_action;
       }
     })
-    console.log(lsParams);
 
     reloadElement(row, 0);
     var paramsSelect = document.createElement("div");
@@ -254,11 +295,19 @@
       var param_name = optionParams.options[optionParams.selectedIndex].text;
       reloadElement(row, 1);
       generate_item_for_params(row, param_name);
-      reloadElement(row, 2);
-      generate_item_for_params(row, "Text to Write");
+      if(check_action_have_text_value(test_action_id, action_have_text)){
+        reloadElement(row, 2);
+        generate_item_for_params(row, "Text to Write");
+      }
     });
   }
-
+  function check_action_have_text_value(test_action_id, action_have_text){
+    if(action_have_text.indexOf(test_action_id) == -1){
+      return false;
+    }else{
+      return true;
+    }
+  }
   function generate_item_for_params(row, param_name){
     var divInputParams = document.createElement("div");
     divInputParams.setAttribute("class", "col-md-2");
@@ -295,7 +344,7 @@
 
 
       var stepNameLabel = document.createElement("label");
-      var stepNameText = document.createTextNode("Step name");
+      var stepNameText = document.createTextNode("Step name:");
 
       stepNameLabel.appendChild(stepNameText);
 
@@ -329,7 +378,7 @@
       firstOp.appendChild(firstOpText);
 
       selectAction.appendChild(firstOp);
-
+      actionSelected = "";
       listActionTest.forEach(function(item){
         var test_action = item.data;
         var itemOp = document.createElement("option");
@@ -337,6 +386,7 @@
         var textItemOp = document.createTextNode(test_action.name);
         itemOp.appendChild(textItemOp);
         if(item_script["action_id"] == test_action.id){
+          actionSelected = test_action.name;
           itemOp.setAttribute("selected", "true");
         }
         selectAction.appendChild(itemOp);
@@ -398,12 +448,14 @@
           }
           selectParam.appendChild(optionParam);
         });
-
         paramDiv.appendChild(selectParam);
         rowDiv.appendChild(paramDiv);
+
         if(item_script["value"] != ""){
           generate_value_for_param(nameParam, item_script["value"], rowDiv);
-          generate_value_for_param("Text to Write", item_script["text"], rowDiv);
+          if(item_script["text"] != ""){
+            generate_value_for_param("Text to Write", item_script["text"], rowDiv);
+          }
         }
         selectParam.addEventListener("change", function(event){
           var param_name = selectParam.options[selectParam.selectedIndex].text;
@@ -412,6 +464,10 @@
           reloadElement(rowDiv, 2);
           generate_item_for_params(rowDiv, "Text to Write");
         });
+      }else{
+        if(item_script["value"] != ""){
+          generate_value_for_param(actionSelected, item_script["value"], rowDiv);
+        }
       }
       // generate params
 

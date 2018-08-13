@@ -3,12 +3,11 @@ class TestSuitsController < ApplicationController
   include TestCasesHelper
   before_action :authenticate_user!
   before_action :read_test_suites
+  before_action :read_test_suites_of_user, only: :index
   before_action :find_testsuit_for_edit, only: %i(edit update)
   before_action :find_testsuit, only: %i(destroy)
-  def index
-    # @test_suites = TestSuit.all
 
-    # render html: @test_suites
+  def index
   end
 
   def new
@@ -18,12 +17,12 @@ class TestSuitsController < ApplicationController
   def create
     if params[:test_suit][:name].present?
       test_suit = {}
-      test_suit['id'] = (@big_id + 1).to_s
+      test_suit["id"] = (@big_id + 1).to_s
       test_suit["name"] = params[:test_suit][:name]
+      test_suit["user_id"] = current_user.id
       test_suit["created_at"] = Time.current
 
       @test_suites << test_suit
-
       write_test_suite_to_file_xml @test_suites
       file_test_suit = test_suit['id'] + ".xml"
       # File.open("lib/xml/test_suits/file_test_suit", "w+") do |f|

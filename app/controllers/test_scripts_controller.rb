@@ -4,14 +4,13 @@ class TestScriptsController < ApplicationController
   def create
     id_test_case = params["test_case_id"].to_i
     ls_test_scripts = params["lsTestScript"]
-
+    test_suit_id = params["test_suit_id"]
     builder = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       xml.TestScripts{
         ls_test_scripts.each do |script|
           xml.TestScript{
             xml.TestActionId script[1]["idTestAction"]
             xml.TestCaseId id_test_case
-            xml.Id "1"
             xml.ParamId script[1]["param_id"]
             xml.Name script[1]["nameTestScript"]
             xml.Value script[1]["value"]
@@ -20,8 +19,8 @@ class TestScriptsController < ApplicationController
         end
       }
     end
-
-    File.open("lib/xml/test_scripts.xml", "a+") do |file|
+    file_name_test_script = "test_script#{test_suit_id}#{id_test_case}.xml"
+    File.open("lib/xml/test_scripts/#{file_name_test_script}", "w+") do |file|
       file << builder.to_xml
     end
     # ls_test_scripts.each do |script|

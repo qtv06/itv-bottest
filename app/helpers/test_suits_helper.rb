@@ -6,6 +6,7 @@ module TestSuitsHelper
           xml.TestSuit{
             xml.Id ts["id"]
             xml.Name ts["name"]
+            xml.UserId ts["user_id"]
             xml.CreatedAt ts["created_at"]
           }
         end
