@@ -6,6 +6,7 @@ class TestCasesController < ApplicationController
   before_action :read_test_cases_of_test_suit, except: %i(index new)
   before_action :find_test_case, only: %i(edit update destroy)
   before_action :read_action, only: :edit
+
   def index
   end
 
@@ -20,9 +21,8 @@ class TestCasesController < ApplicationController
       @test_case.id = @big_id_tc + 1
       @test_case.name = name
       @test_case.created_at = Time.current
-      @test_cases << @test_case
 
-      write_test_case_to_file_xml(@test_cases, @test_suit.id)
+      write_test_case_to_file_xml(@test_case, @test_suit.id)
       flash[:success] = "Add Successful!!"
       redirect_to edit_test_suit_path(@test_suit)
     else
@@ -31,44 +31,47 @@ class TestCasesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     lsTestScript = []
-    file_script = "test_script#{@test_suit.id}#{@test_case.id}.xml"
-    doc_script = Nokogiri::XML(File.open("lib/xml/test_scripts/#{file_script}", "a+"));
+    doc_script = Nokogiri::XML(File.open("lib/xml/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"));
 
-    doc_script.xpath("//TestScript").each do |script|
+    doc_script.xpath("//step").each do |script|
+
       objScript = {}
-      objScript["name"] = script.at_xpath("Name").text
-      objScript["action_id"] = script.at_xpath("TestActionId").text
-      objScript["param_id"] = script.at_xpath("ParamId").text
-      objScript["value"] = script.at_xpath("Value").text
-      objScript["text"] = script.at_xpath("Text").text
-
+      objScript["name"] = script.at_xpath("name").text
+      objScript["action_id"] = script.at_xpath("IdAction").text
+      arguments = []
+      script.xpath("arguments//argument").each do |arg|
+        objArg = {}
+        objArg["name"] = arg.at_xpath("name").text
+        objArg["value"] = arg.at_xpath("value").text
+        arguments << objArg
+      end
+      objScript["arguments"] = arguments
       lsTestScript << objScript
     end
     gon.test_suit_id = @test_suit.id
     gon.test_actions = @test_actions
-    gon.tcId = @test_case.id
+    gon.test_case = @test_case
     gon.test_scripts = lsTestScript
     gon.action_have_text = @action_have_text
   end
 
   def update
     count = 0
+    test_case = TestCase.new
     name = params[:test_case][:name]
     @test_cases.each do |tc|
       if tc.id == params[:id].to_i
         tc.name = name
+        test_case = tc
         count += 1
         break
       end
     end
 
     if count > 0
-      write_test_case_to_file_xml(@test_cases, @test_suit.id)
+      write_test_case_to_file_xml(test_case, @test_suit.id)
       flash[:success] = "Test case #{name} successfully updated"
     else
       flash[:danger] = I18n.t "flash.danger"
@@ -77,17 +80,15 @@ class TestCasesController < ApplicationController
   end
 
   def destroy
-    if @test_cases.delete(@test_case)
-      write_test_case_to_file_xml(@test_cases, @test_suit.id)
-      path_file_script = "lib/xml/test_scripts/test_script#{@test_suit.id}#{@test_case.id}.xml"
-      File.delete(path_file_script) if File.exist?(path_file_script)
-      flash[:success] = I18n.t "Test case #{@test_case.name} successfully deleted"
+    test_case_file = "lib/xml/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{params['id']}.xml"
+    if File.exist? test_case_file
+      FileUtils.rm_rf test_case_file
+      flash[:success] = "Test case #{@test_case.name} successfully deleted"
     else
       flash[:danger] = I18n.t "flash.danger"
     end
     redirect_to edit_test_suit_path(@test_suit)
   end
-
   private
 
   def find_test_suit

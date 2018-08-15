@@ -1,11 +1,11 @@
 class TestSuitsController < ApplicationController
   include TestSuitsHelper
   include TestCasesHelper
+
   before_action :authenticate_user!
-  before_action :read_test_suites
+  before_action :read_test_suites, except: %i(new)
   before_action :read_test_suites_of_user, only: :index
   before_action :find_testsuit_for_edit, only: %i(edit update)
-  before_action :find_testsuit, only: %i(destroy)
 
   def index
   end
@@ -22,9 +22,8 @@ class TestSuitsController < ApplicationController
       test_suit["user_id"] = current_user.id
       test_suit["created_at"] = Time.current
 
-      @test_suites << test_suit
-      write_test_suite_to_file_xml @test_suites
-      file_test_suit = test_suit['id'] + ".xml"
+      # @test_suites << test_suit
+      write_test_suite_to_file_xml test_suit
       flash[:success] = "#{test_suit["name"]} Added Successfully!!"
     else
       flash[:danger] = "Some thing wrong!"
@@ -42,15 +41,17 @@ class TestSuitsController < ApplicationController
 
   def update
     count = 0
+    test_suit = {}
     @test_suites.each do |ts|
       if ts["id"] == params[:id]
         ts["name"] = params[:test_suit][:name]
+        test_suit = ts
         count += 1
         break
       end
     end
     if count > 0
-      write_test_suite_to_file_xml @test_suites
+      write_test_suite_to_file_xml test_suit
       flash[:success] = "Updated TestSuit Successful!!"
       redirect_to root_path
     else
@@ -60,11 +61,9 @@ class TestSuitsController < ApplicationController
   end
 
   def destroy
-    if @test_suites.delete(@test_suit)
-      write_test_suite_to_file_xml @test_suites
-      file_name = "test_suit"+ @test_suit["id"] + ".xml"
-      path_to_file = "lib/xml/test_suits/#{file_name}"
-      File.delete(path_to_file) if File.exist?(path_to_file)
+    path_test_suit_delete = "lib/xml/user#{current_user.id}/test_suites/test_suit#{params["id"]}"
+    if File.exist?(path_test_suit_delete)
+      FileUtils.rm_rf(path_test_suit_delete)
       flash[:success] = "Deleted TestSuit Complete"
     else
       flash[:danger] = "Have a few wrong!!"
@@ -74,16 +73,6 @@ class TestSuitsController < ApplicationController
 
   private
 
-  def find_testsuit
-    @test_suit = {}
-
-    @test_suites.each do |ts|
-      if ts["id"] == params[:id]
-        @test_suit = ts
-      end
-    end
-    redirect_to root_path if @test_suit.blank?
-  end
 
   def find_testsuit_for_edit
     @test_suit = TestSuit.new

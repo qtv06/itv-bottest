@@ -58,7 +58,7 @@ body{
   min-height: 550px;
   padding: 20px 0px;
   margin-top: 52px;
-  width: 80%;
+  width: 90%;
   margin: 52px auto;
 }
 .footer{
@@ -81,7 +81,7 @@ a.navbar-brand {
   margin-left: 30px;
 }
 .container-fluid {
-  padding: 0px 116px;
+  padding: 0px 57px;
 }
 .active a {
   background: none !important;
@@ -104,4 +104,19 @@ a.navbar-brand {
 }
 .form-control{
   border: 1px solid #4c4c4c !important;
+}
+.col-md-2 {
+  padding: 0px 6px !important;
+}
+@media (min-width: 992px){
+  .col-md-2 {
+    width: 12.5% !important;
+  }
+}
+.icon-action{
+  width: 80px !important;
+  text-align: center;
+}
+.th-icon{
+  text-align: center;
 }

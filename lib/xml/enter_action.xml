@@ -6,25 +6,23 @@
 			<id>1</id>
 			<name>AC_ENTER</name>
 		</definition>
-		<language>
+		<!-- <language>
 			<vi>
-				<name>nhập</name>
+				<nam -->e>nhập</name>
 				<description>bấm phím Enter</description>
 				<arguments>
 					<argument>
-						<name>giao diện</name>
-						<type>Layout</type>
+						<name>Local Element by</name>
+						<type>List</type>
+								<item>id</item>
+								<item>css</item>
 					</argument>
 					<argument>
-						<name>đối tượng</name>
-						<type>layout entity</type>
-					</argument>
-					<argument>
-						<name>giá trị</name>
+						<name>value</name>
 						<type>string</type>
 					</argument>
 				</arguments>
-			</vi>
+			<!-- </vi>
 			<en>
 				<name>enter</name>
 				<description>press enter key</description>
@@ -61,7 +59,7 @@
 					</argument>
 				</arguments>
 			</jp>
-		</language>
+		</language> -->
   </action>
   <action>
 		<definition>

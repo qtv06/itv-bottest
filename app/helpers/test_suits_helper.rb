@@ -1,19 +1,17 @@
 module TestSuitsHelper
-  def write_test_suite_to_file_xml test_suites
+  def write_test_suite_to_file_xml test_suit
     builder = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.TestSuites{
-        test_suites.each do |ts|
-          xml.TestSuit{
-            xml.Id ts["id"]
-            xml.Name ts["name"]
-            xml.UserId ts["user_id"]
-            xml.CreatedAt ts["created_at"]
-          }
-        end
+      xml.TestSuit{
+        xml.Id test_suit["id"]
+        xml.Name test_suit["name"]
+        xml.UserId test_suit["user_id"]
+        xml.CreatedAt test_suit["created_at"]
       }
     end
+    test_suit_folder = "test_suit#{test_suit['id']}"
+    Dir.mkdir("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}") unless File.exist?("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}")
 
-    File.open("lib/xml/test_suits/test_suits.xml", "w+") do |file|
+    File.open("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}/test_suit.xml", "w+") do |file|
       file << builder.to_xml
     end
   end

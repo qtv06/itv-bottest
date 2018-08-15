@@ -1,6 +1,6 @@
 <%= form_for [@test_suit, @test_case], url: test_suit_test_case_path, method: :patch do |f| %>
   <div class="btn-action">
-    <%= link_to "", :back, class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= link_to "", edit_test_suit_path(@test_suit), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
     <%= f.submit "", class: "btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
 
     <div class="btn-add btn-icon btn-add-step" data-toggle="tooltip" title="Add Step"></div>
@@ -10,27 +10,30 @@
       <%= f.label "Test Case Name" %>
     </div>
     <div class="col-md-4 col-sm-6 input-test-suite">
-      <%= f.text_field :name, class: "form-control"%>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
 <% end %>
 
+<li class="head-step">
+  <div class="col-md-10"><p>Steps</p></div>
+  <div class="action-icon">
+    <ul>
+      <li>Move</li>
+      <li>Remove</li>
+    </ul>
+  </div>
+</li>
 <ul data-behavior="list-users" class="list-step">
-  <li class="head-step">
-    <div class="col-md-10"><p>Steps</p></div>
-    <div class="col-md-2 action-icon">
-      <ul>
-        <li>Move</li>
-        <li>Remove</li>
-      </ul>
-    </div>
-  </li>
 </ul>
 <div class="row">
   <div class="btn-add-step btn btn-primary">Add Step</div>
   <div class="btn-save-test-script btn btn-info">Save Steps</div>
 </div>
 <script>
+  window.onbeforeunload = function(){
+    return "Are you want leave here!";
+  }
   var listActionTest;
   var test_script_list = gon.test_scripts;
   var action_have_text = gon.action_have_text ;
@@ -50,60 +53,63 @@
       var count_check = 0;
       var listStep = $('.step');
       var listScript = [];
+      var testCase = gon.test_case;
       for(var i = 0; i < listStep.length; i++){
         var row = listStep[i];
-        var nameTestScript = row.children[0].children[1].value;
-        if(check_input(nameTestScript, row.children[0]) == false){
-          count_check += 1;
-        }
-        var idTestAction = row.children[1].children[1].value;
-        if(check_input(idTestAction, row.children[1]) == false){
-          count_check += 1;
-        }
-        var idTestCase = gon.tcId;
-        var param_id = "";
-        var value = "";
-        var text = "";
-        if(row.children.length == 4){
-          value = row.children[3].children[1].value;
-          if(check_input(value, row.children[3]) == false){
-          count_check += 1;
-        }
-        }
-        if(row.children.length == 6){
-          param_id = row.children[3].children[1].value;
-          if(check_input(param_id, row.children[3]) == false){
-            count_check += 1;
-          }
-          value = row.children[4].children[1].value;
-          if(check_input(value, row.children[4]) == false){
-            count_check += 1;
-          }
-          text = row.children[5].children[1].value;
-          if(check_input(text, row.children[5]) == false){
+        // var nameTestScript = row.children[0].children[1].value;
+        // if(check_input(nameTestScript, row.children[0]) == false){
+        //   count_check += 1;
+        // }
+        // var idTestAction = row.children[1].children[1].value;
+        // if(check_input(idTestAction, row.children[1]) == false){
+        //   count_check += 1;
+        // }
+        for(var j = 0; j < row.children.length; j ++){
+          if(check_input(row.children[j].children[1].value, row.children[j])== false){
             count_check += 1;
           }
         }
+        // if(row.children.length == 4){
+        //   value = row.children[3].children[1].value;
+        //   if(check_input(value, row.children[3]) == false){
+        //   count_check += 1;
+        // }
+        // }
+        // if(row.children.length == 6){
+        //   param_id = row.children[3].children[1].value;
+        //   if(check_input(param_id, row.children[3]) == false){
+        //     count_check += 1;
+        //   }
+        //   value = row.children[4].children[1].value;
+        //   if(check_input(value, row.children[4]) == false){
+        //     count_check += 1;
+        //   }
+        //   text = row.children[5].children[1].value;
+        //   if(check_input(text, row.children[5]) == false){
+        //     count_check += 1;
+        //   }
+        // }
         var obj = {};
-        obj["nameTestScript"] = nameTestScript;
-        obj["idTestAction"] = idTestAction;
-        obj["idTestCase"] = idTestCase;
-        obj["param_id"] = param_id;
-        obj["value"] = value;
-        obj["text"] = text;
-
+        for(var j = 0; j < row.children.length; j++){
+          var name = row.children[j].children[0].innerText.substring(0, row.children[j].children[0].innerText.length - 1);
+          obj[name+""] = row.children[j].children[1].value;
+        }
         listScript.push(obj);
+        console.log(listScript);
+
       }
+      var jsonList = JSON.stringify(listScript);
+        console.log(jsonList);
       if(count_check > 0){
         alert("Please fill in all field!");
       }else{
         $.ajax({
           url: '/test_scripts/create',
-          type: 'get',
+          type: 'post',
           data: {
             'test_suit_id': gon.test_suit_id,
-            'test_case_id': gon.tcId,
-            'lsTestScript': listScript
+            'test_case': testCase,
+            'lsTestScript': jsonList
           },
           success : function(data){
             alert(data);
@@ -211,23 +217,39 @@
         var row = event.target.parentElement.parentElement;
         // var id_test_action =
         var divSelectAction = row.children[1].children;
-        params = getParams(listActionTest, divSelectAction[1].value);
-        if(params.length > 0){
-          generate_item_for_test_action(divSelectAction[1].value, row);
-        }else{
-          reloadElement(row, 0);
-          generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
-        }
+        // params = getParams(listActionTest, divSelectAction[1].value);
+        // if(params.length > 0){
+        //   generate_item_for_test_action(divSelectAction[1].value, row);
+        // }else{
+        //   reloadElement(row, 0);
+        //   generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
+        // }
+        var list_arguments = getArguments(listActionTest, divSelectAction[1].value);
+        reloadElement(row, 0);
+        list_arguments.forEach(function(item){
+          generate_item_for_params(row, item["name"], "");
+        });
     });
   }
-  function getParams(lsAction, idAction){
-    params = []
+  // function getParams(lsAction, idAction){
+  //   params = [];
+  //   lsAction.forEach(function(item){
+  //     if(item["data"]["id"] == idAction){
+  //       params = item["params"];
+  //     }
+  //   });
+  //   return params;
+  // }
+
+  function getArguments(lsAction, idAction){
+    var list_arguments = [];
     lsAction.forEach(function(item){
       if(item["data"]["id"] == idAction){
-        params = item["params"];
+        list_arguments = item["argument"];
       }
     });
-    return params;
+
+    return list_arguments;
   }
   function reloadElement(rowitem, level){
     var checkPoint = level + 3;
@@ -252,63 +274,53 @@
 
     return true;
   }
-  function generate_item_for_test_action(test_action_id, row){
-    var lsParams = [];
-    listActionTest.forEach(function(item){
-      var item_test_action = item.data;
-      var item_parmas_test_action = item.params;
-      if(item_test_action.id == parseInt(test_action_id)){
-        lsParams = item_parmas_test_action;
-      }
-    })
+  // function generate_item_for_test_action(test_action_id, row){
+  //   var lsParams = [];
+  //   listActionTest.forEach(function(item){
+  //     var item_test_action = item.data;
+  //     var item_parmas_test_action = item.params;
+  //     if(item_test_action.id == parseInt(test_action_id)){
+  //       lsParams = item_parmas_test_action;
+  //     }
+  //   })
 
-    reloadElement(row, 0);
-    var paramsSelect = document.createElement("div");
-    paramsSelect.setAttribute("class", "col-md-2");
+  //   reloadElement(row, 0);
+  //   var paramsSelect = document.createElement("div");
+  //   paramsSelect.setAttribute("class", "col-md-2");
 
-    var labelParamsSelect = document.createElement("label");
-    var labelParamsText = document.createTextNode("Local Element By:");
-    labelParamsSelect.appendChild(labelParamsText);
-    paramsSelect.appendChild(labelParamsSelect);
+  //   var labelParamsSelect = document.createElement("label");
+  //   var labelParamsText = document.createTextNode("Local Element By:");
+  //   labelParamsSelect.appendChild(labelParamsText);
+  //   paramsSelect.appendChild(labelParamsSelect);
 
-    var optionParams = document.createElement("select");
-    optionParams.setAttribute("class", "form-control ");
-    var firstOpParams = document.createElement("option");
-    firstOpParams.setAttribute("value", "");
-    var firstOpParamsText = document.createTextNode("Choose locator");
-    firstOpParams.appendChild(firstOpParamsText);
+  //   var optionParams = document.createElement("select");
+  //   optionParams.setAttribute("class", "form-control ");
+  //   var firstOpParams = document.createElement("option");
+  //   firstOpParams.setAttribute("value", "");
+  //   var firstOpParamsText = document.createTextNode("Choose locator");
+  //   firstOpParams.appendChild(firstOpParamsText);
 
-    optionParams.appendChild(firstOpParams);
+  //   optionParams.appendChild(firstOpParams);
 
-    lsParams.forEach(function(item){
-      var optionParam = document.createElement("option");
-      optionParam.setAttribute("value", item.id);
-      var optionParamText = document.createTextNode(item.name);
-      optionParam.appendChild(optionParamText);
+  //   lsParams.forEach(function(item){
+  //     var optionParam = document.createElement("option");
+  //     optionParam.setAttribute("value", item.id);
+  //     var optionParamText = document.createTextNode(item.name);
+  //     optionParam.appendChild(optionParamText);
 
-      optionParams.appendChild(optionParam);
-    })
+  //     optionParams.appendChild(optionParam);
+  //   })
 
-    paramsSelect.appendChild(optionParams);
-    row.appendChild(paramsSelect);
-    optionParams.addEventListener("change", function(event){
-      var param_name = optionParams.options[optionParams.selectedIndex].text;
-      reloadElement(row, 1);
-      generate_item_for_params(row, param_name);
-      if(check_action_have_text_value(test_action_id, action_have_text)){
-        reloadElement(row, 2);
-        generate_item_for_params(row, "Text to Write");
-      }
-    });
-  }
-  function check_action_have_text_value(test_action_id, action_have_text){
-    if(action_have_text.indexOf(test_action_id) == -1){
-      return false;
-    }else{
-      return true;
-    }
-  }
-  function generate_item_for_params(row, param_name){
+  //   paramsSelect.appendChild(optionParams);
+  //   row.appendChild(paramsSelect);
+  //   optionParams.addEventListener("change", function(event){
+  //     var param_name = optionParams.options[optionParams.selectedIndex].text;
+  //     reloadElement(row, 1);
+  //     generate_item_for_params(row, param_name);
+
+  //   });
+  // }
+  function generate_item_for_params(row, param_name, param_value){
     var divInputParams = document.createElement("div");
     divInputParams.setAttribute("class", "col-md-2");
 
@@ -323,6 +335,7 @@
     inputParam.setAttribute("class", "form-control");
     inputParam.setAttribute("type", "text");
     inputParam.setAttribute("name", param_name);
+    inputParam.setAttribute("value", param_value);
 
     divInputParams.appendChild(inputParam);
 
@@ -332,7 +345,6 @@
   function generate_test_script_for_test_case() {
     // body...
     test_script_list.forEach(function(item_script){
-      var values = item_script["text_value"];
       var li = document.createElement("li");
       li.setAttribute("class", "item-step");
 
@@ -417,57 +429,11 @@
       buttonDiv.appendChild(buttonDrop);
 
       rowDiv.appendChild(buttonDiv);
-
-      if(item_script["param_id"] != ""){
-        var paramDiv = document.createElement("div");
-        paramDiv.setAttribute("class", "col-md-2 form-group");
-
-        var params = getParams(listActionTest, item_script["action_id"]);
-        var nameParam = "";
-        params.forEach(function(param){
-          if(param.id == item_script["param_id"]){
-            nameParam = param.name;
-          }
+      var listArguments = item_script["arguments"];
+      if(listArguments.length > 0){
+        listArguments.forEach(function(arg){
+          generate_item_for_params(rowDiv, arg["name"], arg["value"]);
         });
-
-        var labelParam = document.createElement("label");
-        var textLabel = document.createTextNode("Locate Element By: ");
-        labelParam.appendChild(textLabel);
-        paramDiv.appendChild(labelParam);
-
-        selectParam = document.createElement("select");
-        selectParam.setAttribute("class", " form-control");
-
-        params.forEach(function(param){
-          optionParam = document.createElement("option");
-          optionParam.setAttribute("value", param.id);
-          textOption = document.createTextNode(param.name);
-          optionParam.appendChild(textOption);
-          if(param.id == item_script["param_id"]){
-            optionParam.setAttribute("selected", "true");
-          }
-          selectParam.appendChild(optionParam);
-        });
-        paramDiv.appendChild(selectParam);
-        rowDiv.appendChild(paramDiv);
-
-        if(item_script["value"] != ""){
-          generate_value_for_param(nameParam, item_script["value"], rowDiv);
-          if(item_script["text"] != ""){
-            generate_value_for_param("Text to Write", item_script["text"], rowDiv);
-          }
-        }
-        selectParam.addEventListener("change", function(event){
-          var param_name = selectParam.options[selectParam.selectedIndex].text;
-          reloadElement(rowDiv, 1);
-          generate_item_for_params(rowDiv, param_name);
-          reloadElement(rowDiv, 2);
-          generate_item_for_params(rowDiv, "Text to Write");
-        });
-      }else{
-        if(item_script["value"] != ""){
-          generate_value_for_param(actionSelected, item_script["value"], rowDiv);
-        }
       }
       // generate params
 
@@ -487,32 +453,31 @@
           var row = event.target.parentElement.parentElement;
           // var id_test_action =
           var divSelectAction = row.children[1].children;
-          params = getParams(listActionTest, divSelectAction[1].value);
-          if(params.length > 0){
-            generate_item_for_test_action(divSelectAction[1].value, row);
-          }else{
-            reloadElement(row, 0);
-            generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
-          }
+          var list_arguments = getArguments(listActionTest, divSelectAction[1].value);
+          reloadElement(row, 0);
+          list_arguments.forEach(function(item){
+            generate_item_for_params(row, item["name"], "");
+          });
       });
+
     });
   }
-  function generate_value_for_param(name, value, row){
-    var valueDiv = document.createElement("div");
-    valueDiv.setAttribute("class", "col-md-2 form-group");
+  // function generate_value_for_param(name, value, row){
+  //   var valueDiv = document.createElement("div");
+  //   valueDiv.setAttribute("class", "col-md-2 form-group");
 
-    var labelValue = document.createElement("label");
-    var labelValueText = document.createTextNode(name + ":");
-    labelValue.appendChild(labelValueText);
-    valueDiv.appendChild(labelValue);
+  //   var labelValue = document.createElement("label");
+  //   var labelValueText = document.createTextNode(name + ":");
+  //   labelValue.appendChild(labelValueText);
+  //   valueDiv.appendChild(labelValue);
 
-    var inputValue = document.createElement("input");
-    inputValue.setAttribute("value", value);
-    inputValue.setAttribute("class", "form-control");
-    inputValue.setAttribute("type", "text");
-    valueDiv.appendChild(inputValue);
+  //   var inputValue = document.createElement("input");
+  //   inputValue.setAttribute("value", value);
+  //   inputValue.setAttribute("class", "form-control");
+  //   inputValue.setAttribute("type", "text");
+  //   valueDiv.appendChild(inputValue);
 
-    row.appendChild(valueDiv);
-  }
+  //   row.appendChild(valueDiv);
+  // }
 
 </script>
