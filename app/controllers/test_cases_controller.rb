@@ -21,6 +21,7 @@ class TestCasesController < ApplicationController
     g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
 
     g.branch('working-with-git')
+    g.config('remote.origin.push', 'refs/heads/master:refs/heads/master')
 
     @test_case = TestCase.new
     name = params[:test_case][:name]
