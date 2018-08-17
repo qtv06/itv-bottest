@@ -37,6 +37,7 @@ class TestSuitsController < ApplicationController
       @test_cases = read_test_cases(params[:id])
     end
     # render xml: test_suit_doc
+
   end
 
   def update

@@ -15,6 +15,13 @@ class TestCasesController < ApplicationController
   end
 
   def create
+    Git.configure do |config|
+      config.git_ssh = 'git@github.com:vovanquang12cntt/itv-bottest.git'
+    end
+    g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
+
+    g.branch('working-with-git')
+
     @test_case = TestCase.new
     name = params[:test_case][:name]
     if !name.blank?
@@ -23,6 +30,8 @@ class TestCasesController < ApplicationController
       @test_case.created_at = Time.current
 
       write_test_case_to_file_xml(@test_case, @test_suit.id)
+
+      debugger
       flash[:success] = "Add Successful!!"
       redirect_to edit_test_suit_path(@test_suit)
     else
