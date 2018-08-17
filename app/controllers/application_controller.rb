@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def read_test_suites
     @test_suites = []
     @big_id = 1
-    Dir.glob("lib/xml/user*/test_suites/*/test_suit.xml").each do |file|
+    Dir.glob("lib/xml/user#{current_user.id}/test_suites/*/test_suit.xml").each do |file|
       doc = Nokogiri::XML(File.open(file))
 
       doc.xpath("TestSuit").each do |ts|

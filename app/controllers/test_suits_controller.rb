@@ -71,6 +71,30 @@ class TestSuitsController < ApplicationController
     redirect_to test_suits_path
   end
 
+  def duplicate
+    if params['user_id']
+      time_create = (Time.current.to_f * 1000).to_i.to_s
+      folder_name = "lib/xml/user#{params['user_id']}/test_suites/test_suit#{params['id']}"
+      folder_name_dup = "lib/xml/user#{params['user_id']}/test_suites/test_suit#{params['id']}_#{time_create}"
+      FileUtils.cp_r "#{folder_name}/.", "#{folder_name_dup}"
+      obj_ts = {}
+      doc = Nokogiri::XML(File.open("#{folder_name_dup}/test_suit.xml"))
+      doc.xpath("TestSuit").each do |ts|
+        # debugger
+        obj_ts["id"] = ts.at_xpath("Id").text + "_#{time_create}"
+        obj_ts["name"] = ts.at_xpath("Name").text + "[duplicate]"
+        obj_ts["created_at"] = time_create
+        obj_ts["user_id"] = current_user.id
+      end
+      write_test_suite_to_file_xml obj_ts
+      flash[:success] = "#{params['name']} was duplicated"
+    else
+      flash[:danger] = "Have a few wrong!!"
+    end
+
+    redirect_to root_path
+  end
+
   private
 
 
@@ -84,4 +108,6 @@ class TestSuitsController < ApplicationController
     end
     redirect_to root_path if @test_suit.blank?
   end
+
+
 end

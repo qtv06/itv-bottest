@@ -52,7 +52,7 @@ class TestCasesController < ApplicationController
     end
     gon.test_suit_id = @test_suit.id
     gon.test_actions = @test_actions
-    gon.test_case = @test_case
+    gon.test_case_id = @test_case.id
     gon.test_scripts = lsTestScript
     gon.action_have_text = @action_have_text
   end

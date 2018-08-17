@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuit>
   <Id>2</Id>
-  <Name>Pick a song</Name>
+  <Name>Pick a my favorite song</Name>
   <UserId>1</UserId>
   <CreatedAt>2018-08-14 04:02:54 UTC</CreatedAt>
 </TestSuit>

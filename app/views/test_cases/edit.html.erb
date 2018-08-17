@@ -1,7 +1,7 @@
 <%= form_for [@test_suit, @test_case], url: test_suit_test_case_path, method: :patch do |f| %>
   <div class="btn-action">
     <%= link_to "", edit_test_suit_path(@test_suit), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
-    <%= f.submit "", class: "btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
+    <%= link_to "",'', class: "btn-save-test-script btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
 
     <div class="btn-add btn-icon btn-add-step" data-toggle="tooltip" title="Add Step"></div>
   </div>
@@ -31,9 +31,6 @@
   <div class="btn-save-test-script btn btn-info">Save Steps</div>
 </div>
 <script>
-  window.onbeforeunload = function(){
-    return "Are you want leave here!";
-  }
   var listActionTest;
   var test_script_list = gon.test_scripts;
   var action_have_text = gon.action_have_text ;
@@ -43,76 +40,43 @@
     if(test_script_list.length > 0){
       generate_test_script_for_test_case();
     }
-    // initItem();
     $('.main').on('click','.btn-add-step', function(event){
       initItem();
     });
     $('.main').on('click', '.btn-save-test-script', function(event) {
-      // event.preventDefault();
-      /* Act on the event */
+      event.preventDefault();
       var count_check = 0;
       var listStep = $('.step');
       var listScript = [];
-      var testCase = gon.test_case;
       for(var i = 0; i < listStep.length; i++){
         var row = listStep[i];
-        // var nameTestScript = row.children[0].children[1].value;
-        // if(check_input(nameTestScript, row.children[0]) == false){
-        //   count_check += 1;
-        // }
-        // var idTestAction = row.children[1].children[1].value;
-        // if(check_input(idTestAction, row.children[1]) == false){
-        //   count_check += 1;
-        // }
         for(var j = 0; j < row.children.length; j ++){
           if(check_input(row.children[j].children[1].value, row.children[j])== false){
             count_check += 1;
           }
         }
-        // if(row.children.length == 4){
-        //   value = row.children[3].children[1].value;
-        //   if(check_input(value, row.children[3]) == false){
-        //   count_check += 1;
-        // }
-        // }
-        // if(row.children.length == 6){
-        //   param_id = row.children[3].children[1].value;
-        //   if(check_input(param_id, row.children[3]) == false){
-        //     count_check += 1;
-        //   }
-        //   value = row.children[4].children[1].value;
-        //   if(check_input(value, row.children[4]) == false){
-        //     count_check += 1;
-        //   }
-        //   text = row.children[5].children[1].value;
-        //   if(check_input(text, row.children[5]) == false){
-        //     count_check += 1;
-        //   }
-        // }
         var obj = {};
         for(var j = 0; j < row.children.length; j++){
           var name = row.children[j].children[0].innerText.substring(0, row.children[j].children[0].innerText.length - 1);
           obj[name+""] = row.children[j].children[1].value;
         }
         listScript.push(obj);
-        console.log(listScript);
-
       }
       var jsonList = JSON.stringify(listScript);
-        console.log(jsonList);
       if(count_check > 0){
-        alert("Please fill in all field!");
+        toastr.error("Please fill in all field!")
       }else{
         $.ajax({
           url: '/test_scripts/create',
           type: 'post',
           data: {
             'test_suit_id': gon.test_suit_id,
-            'test_case': testCase,
+            'test_case_name': $('#test_case_name').val(),
+            'test_case_id': gon.test_case_id,
             'lsTestScript': jsonList
           },
           success : function(data){
-            alert(data);
+            toastr.success(data);
           }
         });
       }

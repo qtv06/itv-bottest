@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCase>
+  <Id>1</Id>
+  <Name>Search address Duplicate</Name>
+  <CreatedAt>2018-08-16 07:25:08 UTC</CreatedAt>
+  <steps>
+    <step>
+      <name>s</name>
+      <IdAction>2</IdAction>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <value>dsf</value>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <value>sdf</value>
+        </argument>
+        <argument>
+          <name>kiểu</name>
+          <value>sfd</value>
+        </argument>
+      </arguments>
+    </step>
+    <step>
+      <name>re</name>
+      <IdAction>13</IdAction>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <value>wer</value>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <value>we</value>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <value>wer</value>
+        </argument>
+      </arguments>
+    </step>
+    <step>
+      <name>try</name>
+      <IdAction>12</IdAction>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <value>tr</value>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <value>gf</value>
+        </argument>
+        <argument>
+          <name>biến</name>
+          <value>tr</value>
+        </argument>
+      </arguments>
+    </step>
+  </steps>
+</TestCase>
