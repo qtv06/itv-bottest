@@ -98,7 +98,9 @@
           $(ul_tc).empty();
           if(data.length == 0){
             $(ul_tc).append('<p>Nothing changed</p>');
+            $('.btn-save-commit').attr('disabled', 'disabled');
           }else{
+            $('.badge').remove();
             $('#lineModalLabel').append("<span class='badge'>" + data.length + "</span>");
             data.forEach(function(item){
               var li = $("<li class='item-tc'></li>");
@@ -134,12 +136,13 @@
           url: '/commit',
           type: 'GET',
           data: {
-            test_cases: testCases,
+            test_cases: JSON.stringify(testCases),
             test_suit: gon.test_suit,
             content_commit: content
           },
           success: function(data){
-            alert(data);
+            location.reload();
+            toastr.success(data);
           }
         })
       }
