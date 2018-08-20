@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def read_test_suites
     @test_suites = []
     @big_id = 1
-    Dir.glob("lib/xml/user#{current_user.id}/test_suites/*/test_suit.xml").each do |file|
+    Dir.glob("../../../data-bottest/user#{current_user.id}/test_suites/*/test_suit.xml").each do |file|
       doc = Nokogiri::XML(File.open(file))
 
       doc.xpath("TestSuit").each do |ts|
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def read_action
     @test_actions = []
     @action_have_text = []
-    doc = Nokogiri::XML(File.open("lib/xml/actions.xml"))
+    doc = Nokogiri::XML(File.open("../../../data-bottest/actions.xml"))
     doc.xpath("//action").each do |action|
       test_action = TestAction.new
       obj = {}
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
       #   @action_have_text << action.at_xpath("Id").text
       # end
       # params = []
-      # doc_params = Nokogiri::XML(File.open("lib/xml/params.xml"))
+      # doc_params = Nokogiri::XML(File.open("../../../data-bottest/params.xml"))
       # doc_params.xpath("//Param").each do |param|
       #   actions_id = param.at_xpath("IdAction").text.split(",")
       #   if actions_id.include? action.at_xpath("Id").text

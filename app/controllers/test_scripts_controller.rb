@@ -28,7 +28,7 @@ class TestScriptsController < ApplicationController
         }
       }
     end
-    File.open("lib/xml/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{params['test_case_id']}.xml", "w+") do |file|
+    File.open("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{params['test_case_id']}.xml", "w+") do |file|
       file << builder.to_xml
     end
     render html: "Test Case #{params['test_case_name']} succesfully saved!!"

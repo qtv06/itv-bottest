@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestSuit>
-  <Id>1</Id>
-  <Name>Booking a Tour</Name>
-  <UserId>1</UserId>
-  <CreatedAt>2018-08-03 09:58:41</CreatedAt>
-</TestSuit>
