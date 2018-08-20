@@ -3,7 +3,7 @@ module TestCasesHelper
     test_cases = []
     @big_id_tc = 0
     filename = "test_suit" + test_suit_id + ".xml"
-    Dir.glob("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case*.xml").each do |file|
+    Dir.glob("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case*.xml").each do |file|
       test_suit_doc = Nokogiri::XML(File.open(file))
       test_suit_doc.xpath("TestCase").each do |tc|
         test_case = TestCase.new
@@ -28,7 +28,7 @@ module TestCasesHelper
       }
     end
 
-    File.open("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{test_case.id}.xml", "w+") do |file|
+    File.open("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{test_case.id}.xml", "w+") do |file|
       file << builder.to_xml
     end
   end

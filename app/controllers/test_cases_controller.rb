@@ -34,7 +34,7 @@ class TestCasesController < ApplicationController
 
       write_test_case_to_file_xml(@test_case, @test_suit.id)
 
-      # g.add "../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
+      # g.add "#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
 
       # g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
       # g.push(remote = 'https', branch = 'working-with-git', opts = {})
@@ -49,7 +49,7 @@ class TestCasesController < ApplicationController
 
   def edit
     lsTestScript = []
-    doc_script = Nokogiri::XML(File.open("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"));
+    doc_script = Nokogiri::XML(File.open("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"));
 
     doc_script.xpath("//step").each do |script|
 
@@ -96,7 +96,7 @@ class TestCasesController < ApplicationController
   end
 
   def destroy
-    test_case_file = "../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{params['id']}.xml"
+    test_case_file = "#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{params['id']}.xml"
     if File.exist? test_case_file
       FileUtils.rm_rf test_case_file
       flash[:success] = "Test case #{@test_case.name} successfully deleted"

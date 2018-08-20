@@ -63,7 +63,7 @@ class TestSuitsController < ApplicationController
   end
 
   def destroy
-    path_test_suit_delete = "../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{params["id"]}"
+    path_test_suit_delete = "#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{params["id"]}"
     if File.exist?(path_test_suit_delete)
       FileUtils.rm_rf(path_test_suit_delete)
       flash[:success] = "Deleted TestSuit Complete"
@@ -76,8 +76,8 @@ class TestSuitsController < ApplicationController
   def duplicate
     if params['user_id']
       time_create = (Time.current.to_f * 1000).to_i.to_s
-      folder_name = "../../../data-bottest/user#{params['user_id']}/test_suites/test_suit#{params['id']}"
-      folder_name_dup = "../../../data-bottest/user#{params['user_id']}/test_suites/test_suit#{params['id']}_#{time_create}"
+      folder_name = "#{Settings.dir_store_data}/user#{params['user_id']}/test_suites/test_suit#{params['id']}"
+      folder_name_dup = "#{Settings.dir_store_data}/user#{params['user_id']}/test_suites/test_suit#{params['id']}_#{time_create}"
       FileUtils.cp_r "#{folder_name}/.", "#{folder_name_dup}"
       obj_ts = {}
       doc = Nokogiri::XML(File.open("#{folder_name_dup}/test_suit.xml"))
