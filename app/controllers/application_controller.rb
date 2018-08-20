@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
       obj["data"] = test_action
 
       arguments = []
-      action.xpath("language//vi//arguments//argument").each do |arg|
+      action.xpath("language//en//arguments//argument").each do |arg|
         argument = {}
         argument["name"] = arg.at_xpath("name").text
         argument["type"] = arg.at_xpath("type").text
