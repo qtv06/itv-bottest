@@ -15,13 +15,13 @@ class TestCasesController < ApplicationController
   end
 
   def create
-    Git.configure do |config|
-      config.git_ssh = 'git@github.com:vovanquang12cntt/itv-bottest.git'
-    end
-    g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
-    g.config('user.name', ENV['GIT_USERNAME'])
-    g.config('user.email', ENV['GIT_EMAIL'])
-    g.branch('working-with-git')
+    # Git.configure do |config|
+    #   config.git_ssh = 'git@github.com:vovanquang12cntt/itv-bottest.git'
+    # end
+    # g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
+    # g.config('user.name', ENV['GIT_USERNAME'])
+    # g.config('user.email', ENV['GIT_EMAIL'])
+    # g.branch('working-with-git')
     # g.config('remote.https.push', 'refs/heads/master:refs/heads/master')
 
     @test_case = TestCase.new
@@ -29,14 +29,15 @@ class TestCasesController < ApplicationController
     if !name.blank?
       @test_case.id = @big_id_tc + 1
       @test_case.name = name
+      @test_case.status = Settings.status.change
       @test_case.created_at = Time.current
 
       write_test_case_to_file_xml(@test_case, @test_suit.id)
 
-      g.add "lib/xml/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
+      # g.add "lib/xml/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
 
-      g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
-      g.push(remote = 'https', branch = 'working-with-git', opts = {})
+      # g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
+      # g.push(remote = 'https', branch = 'working-with-git', opts = {})
       # debugger
       flash[:success] = "Add Successful!!"
       redirect_to edit_test_suit_path(@test_suit)

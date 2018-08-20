@@ -9,6 +9,7 @@ module TestCasesHelper
         test_case = TestCase.new
         test_case.name = tc.at_xpath("Name").text
         test_case.id = tc.at_xpath("Id").text
+        test_case.status = tc.at_xpath("Status").text
         @big_id_tc = @big_id_tc > test_case.id ? @big_id_tc : test_case.id
         test_cases << test_case
       end
@@ -22,6 +23,7 @@ module TestCasesHelper
       xml.TestCase{
         xml.Id test_case.id
         xml.Name test_case.name
+        xml.Status test_case.status
         xml.CreatedAt test_case.created_at
       }
     end
@@ -29,5 +31,16 @@ module TestCasesHelper
     File.open("lib/xml/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{test_case.id}.xml", "w+") do |file|
       file << builder.to_xml
     end
+  end
+
+  def load_test_cases_changed test_suit_id
+    test_cases = read_test_cases test_suit_id
+    test_case_changed = []
+    test_cases.each do |tc|
+      if tc.status == "Change"
+        test_case_changed << tc
+      end
+    end
+    return test_case_changed
   end
 end
