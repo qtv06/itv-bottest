@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_070752) do
+ActiveRecord::Schema.define(version: 2018_08_20_093104) do
 
   create_table "action_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(version: 2018_08_20_070752) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "email"
+    t.string "activation_digest"
+    t.boolean "activated"
+    t.datetime "activated_at"
   end
 
   add_foreign_key "params", "test_actions"
