@@ -1,10 +1,13 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div id="header-color-line">
+
+  </div>
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Bottest</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Web Tests</a></li>
+      <li class="active"><%= link_to "Web Tests",test_suits_path %></li>
       <li><a href="#">Mobie Tests</a></li>
       <li><a href="#">Results</a></li>
       <li><a href="#">Scheduler</a></li>
@@ -12,8 +15,20 @@
       <li><a href="#">Activity</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <% if current_user %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= gravatar_for current_user %></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li>
+            <li><%= link_to "Log out", logout_path, method: :delete %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to "Sign up", new_user_path, class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to "Login", login_path, class: "glyphicon glyphicon-log-in"%></li>
+      <% end %>
     </ul>
   </div>
 </nav>

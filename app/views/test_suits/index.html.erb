@@ -1,2 +1,29 @@
-<h1>TestSuits#index</h1>
-<p>Find me in app/views/test_suits/index.html.erb</p>
+<div class="add-folder-img">
+  <%= link_to image_tag("icon-add-folder"), new_test_suit_path %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Web Test Suites</th>
+      <th class="th-icon">Edit</th>
+      <th class="th-icon">Run</th>
+      <th class="th-icon">Export</th>
+      <th class="th-icon">Duplicate</th>
+      <th class="th-icon">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @test_suit_of_user.any? %>
+      <% @test_suit_of_user.each do |t_suite| %>
+        <tr>
+          <td><span class="icon-folder"></span><%= link_to t_suite["name"], edit_test_suit_path(id: t_suite["id"]) %></td>
+          <td class="icon-action"><%= link_to "", edit_test_suit_path(id: t_suite["id"]), class: "glyphicon glyphicon-pencil" %></td>
+          <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+          <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+          <td class="icon-action"><%= link_to "", duplicate_test_suits_path(t_suite), method: :post, class: "fa fa-clone" %></td>
+          <td class="icon-action"><%= link_to "", test_suit_path(id: t_suite["id"]), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

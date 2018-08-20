@@ -1,2 +1,14 @@
-<h1>TestSuits#new</h1>
-<p>Find me in app/views/test_suits/new.html.erb</p>
+<%= form_for @test_suit do |f| %>
+  <div class="btn-action">
+    <%= link_to "", test_suits_path, class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= f.submit "", class: "btn-save btn-icon" %>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-sm-4">
+      <%= f.label "Test Suit Name" %>
+    </div>
+    <div class="col-md-4 col-sm-6 input-test-suite">
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+<% end %>

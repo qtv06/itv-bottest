@@ -1,0 +1,4729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions>
+  <!-- Action Enter -->
+  <action>
+  <definition>
+    <id>1</id>
+    <name>AC_ENTER</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nhập</name>
+      <description>bấm phím Enter</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>enter</name>
+      <description>press enter key</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>エンター</name>
+      <description>「Enter」キーの押下</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>値</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Click -->
+  <action>
+  <definition>
+    <id>2</id>
+    <name>AC_CLICK</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kích chuột</name>
+      <description>kích chuột</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>kiểu</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>click</name>
+      <description>mouse click</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>type</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>クリック</name>
+      <description>マウスのクリック</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>値</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action use browser -->
+  <action>
+  <definition>
+    <id>3</id>
+    <name>AC_UseBrowser</name>
+  </definition>
+  <language>
+    <vi>
+      <name>sử dụng trình duyệt</name>
+      <description>mô tả sử dụng trình duyệt</description>
+      <arguments>
+        <argument>
+          <name>tên</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>use browser</name>
+      <description>use browser description</description>
+      <arguments>
+        <argument>
+          <name>name</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>ブラウザの使用</name>
+      <description>ブラウザ記述の使用</description>
+      <arguments>
+        <argument>
+          <name>名前</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Open -->
+  <action>
+  <definition>
+    <id>4</id>
+    <name>AC_Open</name>
+  </definition>
+  <language>
+    <vi>
+      <name>mở</name>
+      <description>mô tả mở</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>open</name>
+      <description>open description</description>
+      <arguments>
+        <argument>
+          <name>url</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>オープン</name>
+      <description>記述の開く</description>
+      <arguments>
+        <argument>
+          <name>URL</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check Selected Items -->
+  <action>
+  <definition>
+    <id>5</id>
+    <name>AC_CheckSelectedItem</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra phần tử đã được chọn</name>
+      <description>Kiểm tra một hoặc nhiều phần tử có được chọn trong danh sách. Kết quả là thành công nếu tất cả các phần tử kiểm tra đều được chọn; Nếu không thất bại</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>phần tử 1</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>phần tử 2</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>phần tử n</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check selected items</name>
+      <description>Check the selection status of specified items in a multiple selection control. Result is Passed if all the specified items are selected; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>item 1</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>item 2</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>item n</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>選択された項目のチェック</name>
+      <description>複数選択コントロールで指定された項目の選択状況をチェックします。指定されたすべての項目が選択された場合は合格となります。それ以外の場合は不合格となります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>項目１</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>項目２</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>項目ｎ</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Select -->
+  <action>
+  <definition>
+    <id>6</id>
+    <name>AC_Select</name>
+  </definition>
+  <language>
+    <vi>
+      <name>chọn phần tử</name>
+      <description>Chọn một hoặc nhiều phần tử trong một danh sách</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>các phần tử</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>select</name>
+      <description>Select an item in a combo box control or one or more items of a list box control..</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>items</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>選択</name>
+      <description>コンボボックスコントロールにある1つの項目、またはリストボックスコントロールにある1つの項目または複数の項目を選択します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>複数の項目</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Argument -->
+  <action>
+  <definition>
+    <id>7</id>
+    <name>AC_Argument</name>
+  </definition>
+  <language>
+    <vi>
+      <name>đối số</name>
+      <description>tạo một đối số cho một hành động mà bạn tạo</description>
+      <arguments>
+        <argument>
+          <name>tên</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>giá trị mặc định</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>mô tả</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>kiểu</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>argument</name>
+      <description>Define an argument for the current action definition.</description>
+      <arguments>
+        <argument>
+          <name>name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>default value</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>description</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>type</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>引数</name>
+      <description>現在のアクション定義のために引数を定義します。</description>
+      <arguments>
+        <argument>
+          <name>名前</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>デフォルト値</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>記述</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>区分</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action close browser -->
+  <action>
+  <definition>
+    <id>8</id>
+    <name>AC_CloseBrowser</name>
+  </definition>
+  <language>
+    <vi>
+      <name>đóng trình duyệt</name>
+      <description>Định nghĩa 1 đối số cho hành động hiện tại</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>layout</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>close browser</name>
+      <description>Define an argument for the current action definition.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>ブラウザのクローズ</name>
+      <description>現在のアクション定義のために引数を定義します。</description>
+      <arguments>
+        <argument>
+          <name>名前</name>
+          <type>layout</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Set variable -->
+  <action>
+  <definition>
+    <id>9</id>
+    <name>AC_SetVariable</name>
+  </definition>
+  <language>
+    <vi>
+      <name>gán giá trị</name>
+      <description>gán giá trị cho một biến, nếu biến chưa được khai báo, khai báo biến toàn cục và gán giá trị cho nó</description>
+      <arguments>
+        <argument>
+          <name>tên</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>set variable</name>
+      <description>Assign a value to an existing local or global variable. If the variable has not been declared, declare a new global variable and assign a value to it.</description>
+      <arguments>
+        <argument>
+          <name>name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>変数の設定</name>
+      <description>既存のローカル変数またはグローバル変数に値を代入します。変数が宣言されていない場合は、新グローバル変数を宣言し、この変数に値を代入します。</description>
+      <arguments>
+        <argument>
+          <name>名前</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>値</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Sleep -->
+  <action>
+  <definition>
+    <id>10</id>
+    <name>AC_Sleep</name>
+  </definition>
+  <language>
+    <vi>
+      <name>tạm dừng xử lý</name>
+      <description>tạm dừng xử lý một khoảng thời gian</description>
+      <arguments>
+        <argument>
+          <name>số millisecond</name>
+          <type>long</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>sleep</name>
+      <description>Suspend execution for a specified period of time.</description>
+      <arguments>
+        <argument>
+          <name>milliseconds</name>
+          <type>long</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>睡眠</name>
+      <description>一定期間で実行を一時停止します。</description>
+      <arguments>
+        <argument>
+          <name>ミリ秒</name>
+          <type>long</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check Control Value-->
+  <action>
+  <definition>
+    <id>11</id>
+    <name>AC_Check</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra giá trị</name>
+      <description>kiểm tra giá trị hiển thị của một đối tượng,nếu giá trị thực tế bằng giá trị mong đợi thì kết quả là đúng, ngược lại thì sai</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check control value</name>
+      <description>Check the displayed text in a control against an expected string value. Result is Passed if the values match; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>チェック</name>
+      <description>オブジェクトの表示値をチェックします。実際の値が期待の値である場合は正しいとなります。それ以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>値</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+   </action>
+  <!-- Action Get control value-->
+  <action>
+  <definition>
+    <id>12</id>
+    <name>AC_GetControlValue</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy giá trị</name>
+      <description>trả về giá trị hiển thị của một đối tượng.</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>biến</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get control value</name>
+      <description>Retrieve the displayed text of a control.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>取得</name>
+      <description>コントロールの表示されているテキストを検索します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>変数</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+   </action>
+  <!-- Action Set control value-->
+  <action>
+  <definition>
+    <id>13</id>
+    <name>AC_SetControlValue</name>
+  </definition>
+  <language>
+    <vi>
+      <name>gán giá trị hiển thị</name>
+      <description>gán giá trị hiển thị mới cho một đối tượng</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>set control value</name>
+      <description>Set a new value or state for a specified control.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>設定</name>
+      <description>指定したコントロールの新しい値または状態を設定する</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>値</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+   </action>
+ <!-- Action Does item exist -->
+  <action>
+  <definition>
+    <id>14</id>
+    <name>AC_DoesItemExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>phần tử có tồn tại</name>
+      <description>trả về giá trị true nếu phân tử tồn tại trong danh sách,nếu không tồn tại thì trả về false</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>phần tử</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>biến</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>does item exist</name>
+      <description>Return a Boolean value to indicate whether a specified item within a list box, list view, or combo box control exists.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>item</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>項目は存在しますか。</name>
+      <description>リストボックス、リストビュー、またはコンボボックスコントロール内の指定された項目が存在するかどうかを示すために、Boolean値を返却します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>項目</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>変数</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check Item Not Exist -->
+  <action>
+  <definition>
+    <id>15</id>
+    <name>AC_CheckItemNotExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra phần tử không tồn tại</name>
+      <description>Kiểm tra phần tử chỉ định trong một danh sánh, kết quả Đạt nếu phần tử không được tìm thấy, ngược lại nếu được tìm thấy thì thất bại</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>phần tử</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check item not exist</name>
+      <description>Check for the nonexistence of a specified item in a list box, list view, or combo box control. Result is Passed if the item is found; otherwise failed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>item</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>存在しない項目をチェックします。</name>
+      <description>リストボックス、リストビュー、またはコンボボックスコントロール内の指定された項目が存在しないかどうかをチェックします。その項目が存在する場合は正しいとなります。その以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>項目</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check Item Exist -->
+  <action>
+  <definition>
+    <id>16</id>
+    <name>AC_CheckItemExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra phần tử tồn tại</name>
+      <description>Kiểm tra phần tử chỉ định trong một danh sánh, kết quả Đạt nếu phần tử được tìm thấy, ngược lại thì thất bại</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>phần tử</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check item exist</name>
+      <description>Check for the existence of a specified item in a list box, list view, or combo box control. Result is Passed if the item is found; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>item</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>項目の存在をチェックします</name>
+      <description>リストボックス、リストビュー、またはコンボボックスコントロール内の指定された項目が存在しないかどうかをチェックします。その項目が存在する場合は正しいとなります。その以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>項目</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Refresh -->
+  <action>
+  <definition>
+    <id>17</id>
+    <name>AC_Refresh</name>
+  </definition>
+  <language>
+    <vi>
+      <name>làm mới</name>
+      <description>Làm mới lại một trang web</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>refresh</name>
+      <description>Refresh the web page.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>リフレッシュ</name>
+      <description>ウェブページのリフレッシュ</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Go Forward -->
+  <action>
+  <definition>
+    <id>18</id>
+    <name>AC_GoForward</name>
+  </definition>
+  <language>
+    <vi>
+      <name>đi tiếp</name>
+      <description>đi đến trang web tiếp theo</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>go forward</name>
+      <description>Go forward in the browser navigation history to the next page.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>前進</name>
+      <description>ブラウザのナビゲーション履歴で次のページに進みます。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Get image -->
+  <action>
+  <definition>
+    <id>19</id>
+    <name>AC_GetImage</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nhận hình ảnh</name>
+      <description>nhận hình ảnh từ một đường dẫn</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn hình ảnh</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get image</name>
+      <description>Get image from location.</description>
+      <arguments>
+        <argument>
+          <name>path image</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>イメージの取得</name>
+      <description>場所からイメージを取得します。</description>
+      <arguments>
+        <argument>
+          <name>パスイメージ</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Capture image -->
+  <action>
+  <definition>
+    <id>20</id>
+    <name>AC_CaptureImage</name>
+  </definition>
+  <language>
+    <vi>
+      <name>chụp màn hình</name>
+      <description>chụp lại màn hình đang thực hiện</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>capture image</name>
+      <description>Capture screen.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>キャプチャイメージ</name>
+      <description>キャプチャ画面</description>
+      <arguments>
+        <argument>
+          <name>ロケーション</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action if window not exist -->
+  <action>
+  <definition>
+    <id>21</id>
+    <name>AC_IfWindowNotExists</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nếu cửa sổ không tồn tại</name>
+      <description>bắt đầu một khối lệnh thực hiện khi cửa sổ không được tìm thấy</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>if window not exist</name>
+      <description>Begin a block of test lines which are executed only if a specified window is found not to exist.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>ウィンドウが存在しない場合</name>
+      <description>指定済みのウィンドウが存在しない場合にのみ実行されるテスト行のブロックを開始します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action if window exist -->
+  <action>
+  <definition>
+    <id>22</id>
+    <name>AC_IfWindowExists</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nếu cửa sổ tồn tại</name>
+      <description>bắt đầu một khối lệnh thực hiện khi giao diện được tìm thấy</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>if window exist</name>
+      <description>Begin a block of test lines which are executed only if a specified window is found.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>ウィンドウが存在場合</name>
+      <description>Begin a block of test lines which are executed only if a specified window is found.</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action if control not exist -->
+  <action>
+  <definition>
+    <id>23</id>
+    <name>AC_IfControlNotExists</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nếu đối tượng không tồn tại</name>
+      <description>bắt đầu một khối lệnh thực hiện khi đối tuợng không tìm thấy</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>if control not exist</name>
+      <description>Begin a block of test lines which are executed only if a specified control is found not to exist.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>コントロールが存在しない場合</name>
+      <description>指定済みのウィンドウが存在しない場合にのみ実行されるテスト行のブロックを開始します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action if control exist -->
+  <action>
+  <definition>
+    <id>24</id>
+    <name>AC_IfControlExists</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nếu đối tượng tồn tại </name>
+      <description>bắt đầu một khối lệnh thực hiện khi đối tuợng được tìm thấy</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>if control exist</name>
+      <description>Begin a block of test lines which are executed only if a specified control is found.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>コントロールが存在場合</name>
+      <description>指定済みのウィンドウが存在する場合にのみ実行されるテスト行のブロックを開始します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Does text contain -->
+  <action>
+  <definition>
+    <id>25</id>
+    <name>AC_DoesTextContain</name>
+  </definition>
+  <language>
+    <vi>
+      <name>văn bản chứa</name>
+      <description>kiểm tra trong 1 văn bản lớn có chứa văn bản nhỏ không </description>
+      <arguments>
+        <argument>
+          <name>Văn bản nhỏ</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>văn bản lớn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>biến</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>does text contain</name>
+      <description>Return a Boolean value to indicate whether a specified text fragment is found within another text string.</description>
+      <arguments>
+        <argument>
+          <name>text</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>fragment</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>テキストは含まれていますか。</name>
+      <description>指定済みのテキストフラグメントが別のテキスト文字列にあるかどうかを示すためのBoolean値を返却します。</description>
+      <arguments>
+        <argument>
+          <name>テキスト</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>断片</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>変数</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Does control exist -->
+  <action>
+  <definition>
+    <id>26</id>
+    <name>AC_DoesControlExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>đối tượng tồn tại</name>
+      <description>trả về đúng nếu đối tượng tồn tại, ngược lại thì sai</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>biến</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>does control exist</name>
+      <description>Return a Boolean value to indicate whether the specified control is found to exist.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>コントロールは存在しますか。</name>
+      <description>指定済みのコントロールが存在するかどうかを示すためのBoolean値を返却します。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+        <argument>
+          <name>変数</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check control exist -->
+  <action>
+  <definition>
+    <id>27</id>
+    <name>AC_CheckControlExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra đối tượng tồn tại</name>
+      <description>Kiểm tra sự tồn tại của đối tượng, nếu tồn tại thì Đạt ,ngược lại thì Thất bại</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check control exist</name>
+      <description>Check for the existence of a control. Result is Passed if the specified control is found; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>コントロールの存在をチェックします。</name>
+      <description>コントロールの存在をチェックします。指定済みのコントロールが存在する場合は正しいとなります。それ以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+ <!-- Action if -->
+  <action>
+  <definition>
+    <id>28</id>
+    <name>AC_if</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nếu</name>
+      <description>bắt đầu một khối lệnh thực hiện khi điều kiện trả về true</description>
+      <arguments>
+        <argument>
+          <name>điều kiện</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>if</name>
+      <description>Begin a block of test lines which are executed only if a specified condition is satisfied.</description>
+      <arguments>
+        <argument>
+          <name>condition</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>if</name>
+      <description>指定済みの条件が満たされた場合にのみ実行されるテスト行のブロックを開始します。</description>
+      <arguments>
+        <argument>
+          <name>条件</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Else if -->
+  <action>
+  <definition>
+    <id>29</id>
+    <name>AC_ElseIf</name>
+  </definition>
+  <language>
+    <vi>
+      <name>ngược lại nếu</name>
+      <description>bắt đầu một khối lệnh thực hiện khi giao diện được tìm thấy</description>
+      <arguments>
+        <argument>
+          <name>điều kiện</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>else if</name>
+      <description>Begin a block of test lines which are executed only if a specified condition is satisfied.</description>
+      <arguments>
+        <argument>
+          <name>condition</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>else if</name>
+      <description>指定済みの条件が満たされた場合にのみ実行されるテスト行のブロックを開始します。</description>
+      <arguments>
+        <argument>
+          <name>条件</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Else -->
+  <action>
+  <definition>
+    <id>30</id>
+    <name>AC_Else</name>
+  </definition>
+  <language>
+    <vi>
+      <name>ngược lại</name>
+      <description>bắt đầu một khối lệnh thực hiện khi "nếu" hoặc "ngược lại nếu" tương ứng trả về sai.</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>else</name>
+      <description>Execute the associated test lines if all corresponding if and else if conditions are False.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>else</name>
+      <description>対応するすべてのifおよびelse if条件がFalseの場合、関連のテスト行を実行します。</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action End If -->
+  <action>
+  <definition>
+    <id>31</id>
+    <name>AC_EndIf</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kết thúc nếu</name>
+      <description>kết thúc khối lệnh nếu</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>end if</name>
+      <description>End of if.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>end if</name>
+      <description>End of if.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action create folder -->
+  <action>
+  <definition>
+    <id>32</id>
+    <name>AC_CreateFolder</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thêm thư mục</name>
+      <description>Thêm thư mục mới</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>create folder</name>
+      <description>Create a new folder at the specified location</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダーの作成</name>
+      <description>指定した場所に新規フォルダを作成します。</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Delete folder -->
+  <action>
+  <definition>
+    <id>33</id>
+    <name>AC_DeleteFolder</name>
+  </definition>
+  <language>
+    <vi>
+      <name>xóa thư mục</name>
+      <description>xóa thư mục</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>delete folder</name>
+      <description>Delete a specified folder and its contents</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダーの削除</name>
+      <description>指定したフォルダーとその内容の削除</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action does folder exist -->
+  <action>
+  <definition>
+    <id>34</id>
+    <name>AC_DoesFolderExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thư mục có tồn tại</name>
+      <description>Trả về giá trị đúng nếu thư mục tồn tại</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>does folder exist</name>
+      <description>Return a Boolean value to indicate whether the specified folder is found.</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダーは存在しますか。</name>
+      <description>指定済みのフォルダーが存在するかどうかを示すためのBoolean値を返却します。</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action check folder exist -->
+  <action>
+  <definition>
+    <id>35</id>
+    <name>AC_CheckFolderExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra thư mục tồn tại</name>
+      <description>kiểm tra thư mục tồn tại, kết quả là đạt nếu thư mục tồn tại, còn lại là không đạt</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>check folder exist</name>
+      <description>Check for the existence of a specified folder. Result is Passed if the folder is found ; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダーの存在をチェックします。</name>
+      <description>指定済みのフォルダが存在するかどうかをチェックします。フォルダーが存在する場合は正しいとなります。それ以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action move folder -->
+  <action>
+  <definition>
+    <id>36</id>
+    <name>AC_moveFolder</name>
+  </definition>
+  <language>
+    <vi>
+      <name>di chuyển thư mục</name>
+      <description>di chuyển thư mục sang thư mục mới</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục cũ</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>đường dẫn thư mục mới</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>ghi đè</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>move folder</name>
+      <description>Move a folder to a new location</description>
+      <arguments>
+        <argument>
+          <name>old_folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>new_folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>force</name>
+          <type>bool</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダの移動</name>
+      <description>フォルダーを新しい場所に移動します。</description>
+      <arguments>
+        <argument>
+          <name>旧フォルダーパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>新フォルダーパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action rename folder -->
+  <action>
+  <definition>
+    <id>37</id>
+    <name>AC_RenameFolder</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thay đổi tên thư mục</name>
+      <description>thay đổi tên thư mục thành tên thư mục mới</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên mới của thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>rename folder</name>
+      <description>rename a folder</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>new_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>force</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダの変名</name>
+      <description>フォルダの名前を変更します。</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>新しい名前</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action change folder attribute -->
+  <action>
+  <definition>
+    <id>38</id>
+    <name>AC_ChangeFolderAttribute</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thay đổi thuộc tính thư mục</name>
+      <description>thay đổi thuộc tính thư mục</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên thuộc tính mới</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>change folder attributes</name>
+      <description>Change the attributes of a folder</description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>new_attribute</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>フォルダ属性の変更</name>
+      <description>フォルダの属性を変更します。</description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>新しい属性</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action copy file -->
+  <action>
+  <definition>
+    <id>39</id>
+    <name>AC_CopyFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>sao chép tệp</name>
+      <description>sao chép tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp nguồn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>đường dẫn tệp đích</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>copy file</name>
+      <description>Copy a specified file to a different folder</description>
+      <arguments>
+        <argument>
+          <name>source_file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>target_folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>force</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>コピーファイル</name>
+      <description>指定したファイルを別のフォルダにコピーします。</description>
+      <arguments>
+        <argument>
+          <name>ソースファイルのパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>ターゲットファイルのパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action check folder not exist -->
+  <action>
+  <definition>
+    <id>40</id>
+    <name>AC_CheckFolderNotExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra thư mục không tồn tại</name>
+      <description>kiểm tra thư mục không tồn tại, kết quả là đạt nếu thư mục không tìm thấy, còn lại là không đạt</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>check folder not exist</name>
+      <description>Check for the non-existence of a specified folder. Result is Passed if the folder is not found ; otherwise Failed. </description>
+      <arguments>
+        <argument>
+          <name>folder_path</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>存在しないフォルダーをチェックします。</name>
+      <description>指定済みのフォルダが存在するかどうかをチェックします。フォルダーが存在する場合は正しいとなります。それ以外の場合は不正となります。 </description>
+      <arguments>
+        <argument>
+          <name>フォルダーパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action delete file -->
+  <action>
+  <definition>
+    <id>41</id>
+    <name>AC_DeleteFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>xóa tệp</name>
+      <description>xóa tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>delete file</name>
+      <description>Delete a file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイルの削除</name>
+      <description>ファイルの削除</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action does file exist -->
+  <action>
+  <definition>
+    <id>42</id>
+    <name>AC_DoesFileExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>tệp có tồn tại</name>
+      <description>trả về đúng nếu tệp tồn tại</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>does file exist</name>
+      <description>Return a Boolean value to indicate whether a specified file exists</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイルは存在しますか。</name>
+      <description>指定済みのファイルが存在するかどうかを示すためのブール値を返却します。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Check control not exist -->
+  <action>
+  <definition>
+    <id>43</id>
+    <name>AC_CheckControlNotExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra đối tượng không tồn tại</name>
+      <description>Kiểm tra sự không tồn tại của đối tượng, nếu tồn tại thì Thất bại ,ngược lại thì Đạt</description>
+      <arguments>
+        <argument>
+          <name>giao diện</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check control not exist</name>
+      <description>Check for the existence of a control. Result is Failed if the specified control is found; otherwise Passed.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>存在しないコントロールをチェックします。</name>
+      <description>コントロールの存在をチェックします。指定済みのコントロールが存在する場合は不正となります。その以外の場合は正しいとなります。</description>
+      <arguments>
+        <argument>
+          <name>レイアウト</name>
+          <type>Layout</type>
+        </argument>
+        <argument>
+          <name>コントロール</name>
+          <type>layout entity</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action get file size -->
+  <action>
+  <definition>
+    <id>44</id>
+    <name>AC_GetFileSize</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy độ lớn tệp</name>
+      <description>lấy độ lớn tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get file size</name>
+      <description>Retrieve the file size of a specified file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイルサイズの取得</name>
+      <description>指定したファイルのファイルサイズを取得します。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+ <!-- Action get file attributes-->
+  <action>
+  <definition>
+    <id>45</id>
+    <name>AC_GetFileAttributes</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy thuộc tính tệp</name>
+      <description>lấy thuộc tính tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get file attributes</name>
+      <description>Retrieve all the currently set attributes of a specified file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    <name>ファイル属性の取得</name>
+      <description>指定されたファイルの設定されている全属性を取得します。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+   <!-- Action check file exist -->
+  <action>
+  <definition>
+    <id>46</id>
+    <name>AC_CheckFileExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra tệp tồn tại</name>
+      <description>kiểm tra tệp tồn tại, kết quả là đạt nếu tệp tồn tại, còn lại là không đạt</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>check file exist</name>
+      <description>Check for the existence of a specified file. Result is Passed if the file is found ; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイルの存在をチェックします。</name>
+      <description>指定済みのファイルが存在するかどうかをチェックします。ファイルが存在する場合は正しいとなります。それ以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+   <!-- Action check file not exist -->
+  <action>
+  <definition>
+    <id>47</id>
+    <name>AC_CheckFileNotExist</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiểm tra tệp không tồn tại</name>
+      <description>kiểm tra tệp không tồn tại, kết quả là đạt nếu file không tồn tại, còn lại là không đạt</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>check file not exist</name>
+      <description>Check for the non-existence of a specified file. Result is Passed if the file is not found ; otherwise Failed.</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>存在しないファイルをチェックします。</name>
+      <description>指定済みのファイルが存在するかどうかをチェックします。ファイルが存在しない場合は正しいとなります。それ以外の場合は不正となります。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action get text file -->
+  <action>
+  <definition>
+    <id>48</id>
+    <name>AC_GetTextFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy nội dung tệp</name>
+      <description>Lấy nội dung tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn tệp</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>get text file</name>
+      <description>Retrieve the contents of a text or word-processing file.</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>テキストファイルを取得する</name>
+      <description>テキストファイルまたはワープロファイルの内容を取得します。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+   <!-- Action move file -->
+  <action>
+  <definition>
+    <id>49</id>
+    <name>AC_MoveFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>di chuyển tệp</name>
+      <description>di chuyển tệp sang thư mục mới</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục cũ</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>đường dẫn thư mục mới</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thay thế</name>
+          <type>bool</type>
+        </argument>
+
+      </arguments>
+    </vi>
+    <en>
+      <name>move file</name>
+      <description>Move a specified file to a new folder.</description>
+      <arguments>
+        <argument>
+          <name>old_file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>new_folder_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>force</name>
+          <type>bool</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+   <!-- Action rename file -->
+  <action>
+  <definition>
+    <id>50</id>
+    <name>AC_RenameFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thay đổi tên tệp</name>
+      <description>thay đổi tên tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên tệp mới</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thay thế</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>rename file</name>
+      <description>Rename a file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>new_file_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>force</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action set text file -->
+  <action>
+  <definition>
+    <id>51</id>
+    <name>AC_SetTextFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>ghi nội dung vào tệp</name>
+      <description>ghi nội dung vào tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>nội dung</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>set text file</name>
+      <description>Write text to a file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>text</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイルテキストの設定</name>
+      <description>テキストをファイルに書き込みます。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>テキスト</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action change file attributes-->
+  <action>
+  <definition>
+    <id>52</id>
+    <name>AC_ChangeFileAttributes</name>
+  </definition>
+  <language>
+    <vi>
+      <name>thay đổi thuộc tính tệp</name>
+      <description>thay đổi thuộc tính tệp</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thuộc tính</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>change file attributes</name>
+      <description>Change the attributes of a file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>attribute</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </en>
+    <jp>
+      <name>ファイル属性の変更</name>
+      <description>ファイルの属性を変更します。</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>属性</name>
+          <type>string</type>
+        </argument>
+
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action load excel file-->
+  <action>
+  <definition>
+    <id>53</id>
+    <name>AC_GetRange</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy giá trị từ file excel</name>
+      <description>lấy giá trị từ file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>phạm vi</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>kết quả</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get range</name>
+      <description>get value of range from excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheetName</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>range</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>result</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>エクセルファイルのロード</name>
+      <description>get value of range from excel file</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>シート名</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>range</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action write excel file-->
+  <action>
+  <definition>
+    <id>54</id>
+    <name>AC_WriteExcelFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>ghi giá trị vào file excel</name>
+      <description>ghi giá trị vào file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>phạm vi</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>giá trị</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>write excel file</name>
+      <description>write excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheet_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>range</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value_list</name>
+          <type>array</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>エクセルファイルの書き込み</name>
+      <description>write excel file</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>シート名</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>レンジ</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>値一覧</name>
+          <type>array</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action delete excel file-->
+  <action>
+  <definition>
+    <id>55</id>
+    <name>AC_DeleteColumnExcel</name>
+  </definition>
+  <language>
+    <vi>
+      <name>xóa một cột trong file excel</name>
+      <description>xóa một cột trong file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên cột</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>delete column excel</name>
+      <description>delete column in excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheet_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>column_name</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action insert column excel file-->
+  <action>
+  <definition>
+    <id>56</id>
+    <name>AC_InsertColumnExcel</name>
+  </definition>
+  <language>
+    <vi>
+      <name>chèn một cột trong file excel</name>
+      <description>chèn một cột trong file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên cột</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>insert column excel</name>
+      <description>insert column in excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheet_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>column_name</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action delete row excel file-->
+  <action>
+  <definition>
+    <id>57</id>
+    <name>AC_DeleteRowExcel</name>
+  </definition>
+  <language>
+    <vi>
+      <name>xóa một hàng trong file excel</name>
+      <description>xóa một hàng trong file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thứ tự hàng</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>delete row excel</name>
+      <description>delete row in excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheet_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>row_index</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action insert row excel file-->
+  <action>
+  <definition>
+    <id>58</id>
+    <name>AC_InsertRowExcel</name>
+  </definition>
+  <language>
+    <vi>
+      <name>chèn thêm một hàng trong file excel</name>
+      <description>chèn thêm một hàng trong file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thứ tự hàng</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>insert row excel</name>
+      <description>insert row in excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheet_name</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>row_index</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Login -->
+  <action>
+  <definition>
+    <id>59</id>
+    <name>AC_Login</name>
+  </definition>
+  <language>
+    <vi>
+      <name>đăng nhập</name>
+      <description>chèn thêm một hàng trong file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thứ tự hàng</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>login</name>
+      <description>insert row in excel file</description>
+      <arguments>
+        <argument>
+          <name>layout_params</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>user_params</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>pass_params</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    <name>login</name>
+      <description>insert row in excel file</description>
+      <arguments>
+        <argument>
+          <name>layout_params</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>user_params</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>pass_params</name>
+          <type>integer</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action GetAttribute -->
+  <action>
+  <definition>
+    <id>60</id>
+    <name>AC_GetAttribute</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lay thuoc tinh</name>
+      <description>lay thuoc tinh cua một control</description>
+      <arguments>
+        <argument>
+          <name>man hinh</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>doi tuong</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thuoc tinh</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>bien</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get attribute</name>
+      <description>get attribute for element</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>attribute</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action CheckAttribute -->
+  <action>
+  <definition>
+    <id>61</id>
+    <name>AC_CheckControlAttribute</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kiem tra thuoc tinh</name>
+      <description>kiem tra thuoc tinh cua mot contol voi mot gia tri</description>
+      <arguments>
+        <argument>
+          <name>man hinh</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>đoi tuong</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>thuoc tinh</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>check control attribute</name>
+      <description>check attribute of element with value</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>attribute</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action For -->
+  <action>
+  <definition>
+    <id>62</id>
+    <name>AC_For</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>for</name>
+      <description>The for statement provides a compact way to iterate over a range of values</description>
+      <arguments>
+        <argument>
+          <name>start</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>end</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>count</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+ <!-- Action While -->
+  <action>
+  <definition>
+    <id>63</id>
+    <name>AC_While</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>while</name>
+      <description>The while statement continually executes a block of statements while a particular condition is true</description>
+      <arguments>
+        <argument>
+          <name>condition</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>count</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- AC_UseDatasource -->
+  <action>
+  <definition>
+    <id>64</id>
+    <name>AC_UseDatasource</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>use datasource</name>
+      <description>use datasource description</description>
+      <arguments>
+        <argument>
+          <name>datasource_name</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+    <!-- AC_ExecuteQuery -->
+  <action>
+  <definition>
+    <id>65</id>
+    <name>AC_ExecuteQuery</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>execute query</name>
+      <description>execute query</description>
+      <arguments>
+        <argument>
+          <name>query_command</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>result</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- AC_End_For -->
+   <action>
+  <definition>
+    <id>66</id>
+    <name>AC_End_For</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>end for</name>
+      <description>end of for</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action End While -->
+  <action>
+  <definition>
+    <id>67</id>
+    <name>AC_End_While</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kết thúc nếu</name>
+      <description>kết thúc khối lệnh nếu</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>end while</name>
+      <description>End of While.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>end While</name>
+      <description>End of While.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action MATRIX -->
+  <action>
+  <definition>
+    <id>68</id>
+    <name>AC_MATRIX</name>
+  </definition>
+  <language>
+    <vi>
+      <name>ma trận</name>
+      <description>ma trận</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>matrix</name>
+      <description>matrix.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>end While</name>
+      <description>End of While.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+   <!-- Action Compare -->
+  <action>
+  <definition>
+    <id>69</id>
+    <name>AC_COMPARE</name>
+  </definition>
+  <language>
+    <vi>
+      <name>So sánh</name>
+      <description>so sánh 2 datasource</description>
+      <arguments>
+        <argument>
+          <name>Before Data</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>After Data</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>compare</name>
+      <description>compare 2 database</description>
+      <arguments>
+        <argument>
+          <name>Before Data</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>After Data</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>compare</name>
+      <description>compare 2 database</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action SCREEN -->
+  <action>
+  <definition>
+    <id>70</id>
+    <name>AC_SCREEN</name>
+  </definition>
+  <language>
+    <vi>
+      <name>mà hình</name>
+      <description>mà hình</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>screen</name>
+      <description>screen</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>screen</name>
+      <description>screen.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action> <action>
+  <definition>
+    <id>70</id>
+    <name>AC_SCREEN</name>
+  </definition>
+  <language>
+    <vi>
+      <name>mà hình</name>
+      <description>mà hình</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>screen</name>
+      <description>screen</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>screen</name>
+      <description>screen.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action INPUT -->
+  <action>
+  <definition>
+    <id>71</id>
+    <name>AC_INPUT</name>
+  </definition>
+  <language>
+    <vi>
+      <name>nhập </name>
+      <description>nhập vào text box</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>input</name>
+      <description>input text box.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>input</name>
+      <description>input text box.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action END_MATRIX -->
+  <action>
+  <definition>
+    <id>72</id>
+    <name>AC_END_MATRIX</name>
+  </definition>
+  <language>
+    <vi>
+      <name>kết thúc ma trận</name>
+      <description>kết thúc khối lệnh ma trận</description>
+      <arguments>
+      </arguments>
+    </vi>
+    <en>
+      <name>end matrix</name>
+      <description>End of matrix.</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+      <name>end matrix</name>
+      <description>End of matrix.</description>
+      <arguments>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action GET_All_TABLE_DATA -->
+  <action>
+  <definition>
+    <id>73</id>
+    <name>AC_GET_All_TABLE_DATA</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy tất tất các dữ liệu trong bảng</name>
+      <description>lấy tất cả các dữ liệu trong bảng</description>
+      <arguments>
+        <argument>
+          <name>màng hình</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>điều khiển</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>dữ liệu</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get all table data</name>
+      <description>get all table data.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tblControl</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>nextControl</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>get all table data</name>
+      <description>get all table data.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action CLICK_TABLE_CELL -->
+  <action>
+  <definition>
+    <id>73</id>
+    <name>AC_CLICK_TABLE_CELL</name>
+  </definition>
+  <language>
+    <vi>
+      <name>bấm vào ô trong bảng</name>
+      <description>bấm ô trong bảng</description>
+      <arguments>
+        <argument>
+          <name>màng hình</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>điều khiển</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>hàng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cột</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>kiểu</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>click table cell</name>
+      <description>click table cell.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>type</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+        <name>click table cell</name>
+      <description>click table cell.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>type</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action GET_TABLE_CELL_VALUE -->
+  <action>
+  <definition>
+    <id>74</id>
+    <name>AC_GET_TABLE_CELL_VALUE</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy giá trị ô trong bảng</name>
+      <description>lấy giá trị ô trong bảng</description>
+      <arguments>
+        <argument>
+          <name>màng hình</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>điều khiển</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>hàng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cột</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>kiểu</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get table cell value</name>
+      <description>get table cell value.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>get table cell value</name>
+      <description>get table cell value.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+  <!-- Action GetTableDataByRange -->
+  <action>
+  <definition>
+    <id>75</id>
+    <name>AC_GetTableDataByRange</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy giá trị ô trong bảng</name>
+      <description>lấy giá trị ô trong bảng</description>
+      <arguments>
+        <argument>
+          <name>màng hình</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>điều khiển</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>hàng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cột</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>Kết quả</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get table data range value</name>
+      <description>get table cell value.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>get table cell value</name>
+      <description>get table cell value.</description>
+    </jp>
+  </language>
+  </action>
+  <!-- Action SetTableCellValue -->
+  <action>
+  <definition>
+    <id>76</id>
+    <name>AC_SetTableCellValue</name>
+  </definition>
+  <language>
+    <vi>
+      <name>Thay đổi giá trị của đối tượng trong bảng</name>
+      <description>thay đổi giá trị</description>
+      <arguments>
+        <argument>
+          <name>màng hình</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>điều khiển</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>hàng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cột</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>đối tượng</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>Kết quả</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>set table cell value</name>
+      <description>set table cell value.</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>row</name>
+          <type>string</type>
+        </argument>
+          <argument>
+          <name>column</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>itemCell</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>set table cell value</name>
+      <description>set table cell value.</description>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Get Cell -->
+  <action>
+  <definition>
+    <id>77</id>
+    <name>AC_GetCell</name>
+  </definition>
+  <language>
+    <vi>
+      <name>lấy giá trị từ file excel</name>
+      <description>lấy giá trị từ file excel</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>tên sheet</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>ô</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>kết quả</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>get cell</name>
+      <description>get value of cell from excel file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>sheetName</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cell</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>result</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+      <name>エクセルファイルのロード</name>
+      <description>get value of cell from excel file</description>
+      <arguments>
+        <argument>
+          <name>ファイルパス</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>シート名</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>cell</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>result</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </jp>
+  </language>
+  </action>
+    <!-- Action Delete file -->
+  <action>
+  <definition>
+    <id>78</id>
+    <name>AC_CreateFile</name>
+  </definition>
+  <language>
+    <vi>
+      <name>tạo file</name>
+      <description>tạo file</description>
+      <arguments>
+        <argument>
+          <name>đường dẫn thư mục</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>nội dung</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </vi>
+    <en>
+      <name>create file</name>
+      <description>create file</description>
+      <arguments>
+        <argument>
+          <name>file_path</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>content</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+    <!-- Action mouse move -->
+  <action>
+  <definition>
+    <id>79</id>
+    <name>AC_MouseMove</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>mouse move</name>
+      <description>mouse move</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+      <!-- Action Capture Screen -->
+  <action>
+  <definition>
+    <id>80</id>
+    <name>AC_CaptureScreen</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>capture screen</name>
+      <description>capture full page</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action send keys -->
+  <action>
+  <definition>
+    <id>81</id>
+    <name>AC_SendKeys</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>send keys</name>
+      <description>send keys</description>
+      <arguments>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+    <!-- Action check value -->
+  <action>
+  <definition>
+    <id>82</id>
+    <name>AC_CheckValue</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check value</name>
+      <description>check value</description>
+      <arguments>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>value</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Export To Csv -->
+  <action>
+  <definition>
+    <id>83</id>
+    <name>AC_ExportToCsv</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>export to csv</name>
+      <description>export to csv with option:overwrite,append </description>
+      <arguments>
+        <argument>
+          <name>filepath</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>option</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action get list item -->
+  <action>
+  <definition>
+    <id>83</id>
+    <name>AC_GetListItem</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>get list item</name>
+      <description>export to csv with option:overwrite,append </description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action Foreach -->
+  <action>
+  <definition>
+    <id>84</id>
+    <name>AC_Foreach</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>foreach</name>
+      <description>foreach variable: [a,b,c];[x,y,z];[...] or a;b;c;...</description>
+      <arguments>
+        <argument>
+          <name>item</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action End Foreach -->
+  <action>
+  <definition>
+    <id>85</id>
+    <name>AC_EndForeach</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>end foreach</name>
+      <description>end foreach</description>
+      <arguments>
+
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action End Foreach -->
+  <action>
+  <definition>
+    <id>86</id>
+    <name>AC_MouseHover</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>mouse hover</name>
+      <description>end foreach</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action AC_CheckBox -->
+  <action>
+  <definition>
+    <id>87</id>
+    <name>AC_SetCheckBox</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>set checkbox</name>
+      <description>mouse hover</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>isCheck</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action AC_CompareCSVFile -->
+  <action>
+  <definition>
+    <id>88</id>
+    <name>AC_CompareCSVFile</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>compare csv file</name>
+      <description>compare csv file</description>
+      <arguments>
+        <argument>
+          <name>beforeCSVPath</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>afterCSVPath</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>nameResultFile</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <!-- Action AC_HTTPGET -->
+  <action>
+  <definition>
+    <id>89</id>
+    <name>AC_HttpGet</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>http get</name>
+      <description>compare csv file</description>
+      <arguments>
+        <argument>
+          <name>uri</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>headers</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>networkCredential</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>90</id>
+    <name>AC_CheckControlFocus</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check control focus</name>
+      <description>CheckControlFocus</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>91</id>
+    <name>AC_HttpPost</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>http post</name>
+      <description>HttpPost</description>
+      <arguments>
+        <argument>
+          <name>uri</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>headers</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>networkCredential</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>92</id>
+    <name>AC_HttpPut</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>http put</name>
+      <description>Http Put</description>
+      <arguments>
+        <argument>
+          <name>uri</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>headers</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>data</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>networkCredential</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>92</id>
+    <name>AC_HttpDelete</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>http delete</name>
+      <description>AC_HttpDelete</description>
+      <arguments>
+        <argument>
+          <name>uri</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>networkCredential</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>93</id>
+    <name>AC_GetIMESendkey</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>get IME sendkey</name>
+      <description>AC_GetIMESendkey</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>94</id>
+    <name>AC_MessageBox</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>message box</name>
+      <description>AC_MessageBox</description>
+      <arguments>
+        <argument>
+          <name>text</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>95</id>
+    <name>AC_GetAlertMessage</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>get alert message</name>
+      <description>AC_GetAlertMessage</description>
+      <arguments>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>96</id>
+    <name>AC_CheckAlertMessage</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check alert message</name>
+      <description>AC_CheckAlertMessage</description>
+      <arguments>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>97</id>
+    <name>AC_CheckItemCssValue</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check item css value</name>
+      <description>AC_CheckItemColor</description>
+      <arguments>
+      <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>attribute</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>98</id>
+    <name>AC_DismissAlert</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>dismiss alert</name>
+      <description>AC_DismissAlert</description>
+      <arguments>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>99</id>
+    <name>AC_SetControlFocus</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>set control focus</name>
+      <description>AC_DismissAlert</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>100</id>
+    <name>AC_GetDataTable</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>get data table</name>
+      <description>AC_GetDataTable</description>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>control</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>variableData</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>escapteHeader</name>
+          <type>bool</type>
+        </argument>
+        <argument>
+          <name>escapeFooter</name>
+          <type>bool</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>101</id>
+    <name>AC_CheckTableRowCount</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check table row count</name>
+      <description>AC_CheckTableRowCount</description>
+      <arguments>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>102</id>
+    <name>AC_CheckNumberValue</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check number value</name>
+      <description>AC_CheckNumberValue</description>
+      <arguments>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>103</id>
+    <name>AC_CheckLength</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check length</name>
+      <description>AC_CheckLength</description>
+      <arguments>
+        <argument>
+          <name>variable</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>lengthCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>104</id>
+    <name>AC_CheckFullSize</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check fullsize</name>
+      <description>AC_CheckFullSize</description>
+      <arguments>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>105</id>
+    <name>AC_CheckHalfSize</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>check halfsize</name>
+      <description>AC_CheckHalfSize</description>
+      <arguments>
+        <argument>
+          <name>valueCheck</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+  <action>
+  <definition>
+    <id>106</id>
+    <name>AC_CompareImage</name>
+  </definition>
+  <language>
+    <vi>
+    </vi>
+    <en>
+      <name>compare image</name>
+      <description>compare image</description>
+      <arguments>
+        <argument>
+          <name>imageBefore</name>
+          <type>string</type>
+        </argument>
+        <argument>
+          <name>imageAfter</name>
+          <type>string</type>
+        </argument>
+      </arguments>
+    </en>
+    <jp>
+    </jp>
+  </language>
+  </action>
+ </actions>

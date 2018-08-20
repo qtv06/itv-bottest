@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_103143) do
+ActiveRecord::Schema.define(version: 2018_08_03_035051) do
+
+  create_table "action_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "params", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "test_action_id"
+    t.string "param_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_action_id"], name: "index_params_on_test_action_id"
+  end
+
+  create_table "test_actions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "action_type_id"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_type_id"], name: "index_test_actions_on_action_type_id"
+  end
+
+  create_table "test_cases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "test_suit_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_suit_id"], name: "index_test_cases_on_test_suit_id"
+    t.index ["user_id"], name: "index_test_cases_on_user_id"
+  end
+
+  create_table "test_scripts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "test_case_id"
+    t.integer "test_action_id"
+    t.integer "user_id"
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,13 +71,27 @@ ActiveRecord::Schema.define(version: 2018_07_30_103143) do
     t.index ["user_id"], name: "index_test_suits_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.string "address"
+  create_table "test_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "test_script_id"
+    t.integer "test_action_id"
+    t.integer "param_id"
+    t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "email"
+  end
+
+  add_foreign_key "params", "test_actions"
+  add_foreign_key "test_actions", "action_types"
+  add_foreign_key "test_cases", "test_suits"
+  add_foreign_key "test_cases", "users"
   add_foreign_key "test_suits", "users"
 end

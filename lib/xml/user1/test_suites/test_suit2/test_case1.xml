@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCase>
+  <Id>1</Id>
+  <Name>Select a song</Name>
+  <CreatedAt>2018-08-16 08:40:18 UTC</CreatedAt>
+  <steps>
+    <step>
+      <name>sad</name>
+      <IdAction>4</IdAction>
+      <arguments>
+        <argument>
+          <name>đường dẫn</name>
+          <value>asdsad</value>
+        </argument>
+      </arguments>
+    </step>
+  </steps>
+</TestCase>

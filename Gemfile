@@ -22,8 +22,11 @@ gem 'coffee-rails', '~> 4.2'
 gem "bootstrap-sass", "~> 3.3", ">= 3.3.7"
 gem "jquery-rails"
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'acts_as_list'
 gem 'turbolinks', '~> 5'
 gem "gon"
+gem "toastr-rails"
+gem "nokogiri"
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem "font-awesome-rails", "~> 4.7", ">= 4.7.0.4"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

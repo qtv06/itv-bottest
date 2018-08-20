@@ -1,0 +1,16 @@
+<%= form_for [@test_suit, @test_case] do |f| %>
+  <div class="btn-action">
+    <%= link_to "", url_for(:back), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= f.submit "", class: "btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
+
+    <div class="btn-add btn-icon btn-add-step" data-toggle="tooltip" title="Add Step"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-sm-4 label-test-suit">
+      <%= f.label "Test Case Name" %>
+    </div>
+    <div class="col-md-4 col-sm-6 input-test-suite">
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+<% end %>

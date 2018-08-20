@@ -1,0 +1,447 @@
+<%= form_for [@test_suit, @test_case], url: test_suit_test_case_path, method: :patch do |f| %>
+  <div class="btn-action">
+    <%= link_to "", edit_test_suit_path(@test_suit), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= link_to "",'', class: "btn-save-test-script btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
+
+    <div class="btn-add btn-icon btn-add-step" data-toggle="tooltip" title="Add Step"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-sm-4 label-test-suit">
+      <%= f.label "Test Case Name" %>
+    </div>
+    <div class="col-md-4 col-sm-6 input-test-suite">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+<% end %>
+
+<li class="head-step">
+  <div class="col-md-10"><p>Steps</p></div>
+  <div class="action-icon">
+    <ul>
+      <li>Move</li>
+      <li>Remove</li>
+    </ul>
+  </div>
+</li>
+<ul data-behavior="list-users" class="list-step">
+</ul>
+<div class="row">
+  <div class="btn-add-step btn btn-primary">Add Step</div>
+  <div class="btn-save-test-script btn btn-info">Save Steps</div>
+</div>
+<script>
+  var listActionTest;
+  var test_script_list = gon.test_scripts;
+  var action_have_text = gon.action_have_text ;
+  var ul = $("[data-behavior='list-users']");
+  $(document).ready(function(){
+    listActionTest = gon.test_actions;
+    if(test_script_list.length > 0){
+      generate_test_script_for_test_case();
+    }
+    $('.main').on('click','.btn-add-step', function(event){
+      initItem();
+    });
+    $('.main').on('click', '.btn-save-test-script', function(event) {
+      event.preventDefault();
+      var count_check = 0;
+      var listStep = $('.step');
+      var listScript = [];
+      for(var i = 0; i < listStep.length; i++){
+        var row = listStep[i];
+        for(var j = 0; j < row.children.length; j ++){
+          if(check_input(row.children[j].children[1].value, row.children[j])== false){
+            count_check += 1;
+          }
+        }
+        var obj = {};
+        for(var j = 0; j < row.children.length; j++){
+          var name = row.children[j].children[0].innerText.substring(0, row.children[j].children[0].innerText.length - 1);
+          obj[name+""] = row.children[j].children[1].value;
+        }
+        listScript.push(obj);
+      }
+      var jsonList = JSON.stringify(listScript);
+      if(count_check > 0){
+        toastr.error("Please fill in all field!")
+      }else{
+        $.ajax({
+          url: '/test_scripts/create',
+          type: 'post',
+          data: {
+            'test_suit_id': gon.test_suit_id,
+            'test_case_name': $('#test_case_name').val(),
+            'test_case_id': gon.test_case_id,
+            'lsTestScript': jsonList
+          },
+          success : function(data){
+            toastr.success(data);
+          }
+        });
+      }
+
+    });
+    $("[data-behavior='list-users']").sortable();
+  });
+
+  function initItem(){
+    var li = document.createElement("li");
+    li.setAttribute("class", "item-step");
+
+    var rowDiv = document.createElement("div");
+    rowDiv.setAttribute("class", " row step");
+
+    var stepNameDiv = document.createElement("div");
+    stepNameDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+
+    var stepNameLabel = document.createElement("label");
+    var stepNameText = document.createTextNode("Step name:");
+
+    stepNameLabel.appendChild(stepNameText);
+
+    stepNameTextBox = document.createElement("input");
+    stepNameTextBox.setAttribute("class", "form-control")
+    stepNameTextBox.setAttribute("type", "text");
+
+    stepNameDiv.appendChild(stepNameLabel);
+    stepNameDiv.appendChild(stepNameTextBox);
+    rowDiv.appendChild(stepNameDiv);
+
+    //create div box action
+    var actionDiv = document.createElement("div");
+    actionDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+    // create lable action
+    var lableAction = document.createElement("label");
+    var textAction = document.createTextNode("Action: ");
+
+    lableAction.appendChild(textAction);
+    actionDiv.appendChild(lableAction);
+    // create select action
+    var selectAction = document.createElement("select");
+    selectAction.setAttribute("class", " form-control");
+    selectAction.setAttribute("name", "action");
+
+    var firstOp = document.createElement("option");
+    firstOp.setAttribute("value", "");
+    var firstOpText = document.createTextNode("Choose Action");
+    firstOp.appendChild(firstOpText);
+
+    selectAction.appendChild(firstOp);
+
+    listActionTest.forEach(function(item){
+      var test_action = item["data"];
+      var itemOp = document.createElement("option");
+      itemOp.setAttribute("value", test_action.id);
+      var textItemOp = document.createTextNode(test_action.name);
+      itemOp.appendChild(textItemOp);
+      selectAction.appendChild(itemOp);
+    });
+
+    //add selectAction to div Action
+    actionDiv.appendChild(selectAction);
+    rowDiv.appendChild(actionDiv);
+
+
+    //add 2 button
+    var buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "btn-action col-sm-12 col-md-2");
+
+    var buttonDrag = document.createElement('div');
+    buttonDrag.setAttribute("class", "btn-action-drag");
+    var iconDrag = document.createElement("i");
+    iconDrag.setAttribute("class", "fa fa-arrows fa-2x");
+    buttonDrag.appendChild(iconDrag);
+
+    var buttonDrop = document.createElement('div');
+    buttonDrop.setAttribute("class", "btn-action-drop");
+    var iconDrop = document.createElement("i");
+    iconDrop.setAttribute("class", "fa fa-trash fa-2x");
+    buttonDrop.appendChild(iconDrop);
+
+    buttonDiv.appendChild(buttonDrag);
+    buttonDiv.appendChild(buttonDrop);
+
+    rowDiv.appendChild(buttonDiv);
+    //add rowDiv to li
+    li.appendChild(rowDiv);
+    ul.append(li);
+
+    // add event remove to btnDrop
+    buttonDrop.addEventListener("click",
+      function(event){
+        li.remove();
+    });
+    // generate params of action test
+    selectAction.addEventListener("change",
+      function(event){
+        var item = event.target;
+        var row = event.target.parentElement.parentElement;
+        // var id_test_action =
+        var divSelectAction = row.children[1].children;
+        // params = getParams(listActionTest, divSelectAction[1].value);
+        // if(params.length > 0){
+        //   generate_item_for_test_action(divSelectAction[1].value, row);
+        // }else{
+        //   reloadElement(row, 0);
+        //   generate_item_for_params(row, divSelectAction[1].options[divSelectAction[1].selectedIndex].text);
+        // }
+        var list_arguments = getArguments(listActionTest, divSelectAction[1].value);
+        reloadElement(row, 0);
+        list_arguments.forEach(function(item){
+          generate_item_for_params(row, item["name"], "");
+        });
+    });
+  }
+  // function getParams(lsAction, idAction){
+  //   params = [];
+  //   lsAction.forEach(function(item){
+  //     if(item["data"]["id"] == idAction){
+  //       params = item["params"];
+  //     }
+  //   });
+  //   return params;
+  // }
+
+  function getArguments(lsAction, idAction){
+    var list_arguments = [];
+    lsAction.forEach(function(item){
+      if(item["data"]["id"] == idAction){
+        list_arguments = item["argument"];
+      }
+    });
+
+    return list_arguments;
+  }
+  function reloadElement(rowitem, level){
+    var checkPoint = level + 3;
+    var startPoint = level;
+    var rowLength = rowitem.children.length;
+    if(rowLength > checkPoint){
+      for(var i = rowLength - 1; i > checkPoint-1; i--){
+          rowitem.children[i].remove();
+      }
+    }
+  }
+  function check_input(value, item){
+    if(value == ""){
+      item.children[1].setAttribute("placeholder", "Please enter a value");
+      item.children[0].setAttribute("class", "unvalid-text");
+      item.children[1].setAttribute("class", "form-control unvalid-input");
+      return false;
+    }else{
+      item.children[0].classList.remove("unvalid-text");
+      item.children[1].classList.remove("unvalid-input");
+    }
+
+    return true;
+  }
+  // function generate_item_for_test_action(test_action_id, row){
+  //   var lsParams = [];
+  //   listActionTest.forEach(function(item){
+  //     var item_test_action = item.data;
+  //     var item_parmas_test_action = item.params;
+  //     if(item_test_action.id == parseInt(test_action_id)){
+  //       lsParams = item_parmas_test_action;
+  //     }
+  //   })
+
+  //   reloadElement(row, 0);
+  //   var paramsSelect = document.createElement("div");
+  //   paramsSelect.setAttribute("class", "col-md-2");
+
+  //   var labelParamsSelect = document.createElement("label");
+  //   var labelParamsText = document.createTextNode("Local Element By:");
+  //   labelParamsSelect.appendChild(labelParamsText);
+  //   paramsSelect.appendChild(labelParamsSelect);
+
+  //   var optionParams = document.createElement("select");
+  //   optionParams.setAttribute("class", "form-control ");
+  //   var firstOpParams = document.createElement("option");
+  //   firstOpParams.setAttribute("value", "");
+  //   var firstOpParamsText = document.createTextNode("Choose locator");
+  //   firstOpParams.appendChild(firstOpParamsText);
+
+  //   optionParams.appendChild(firstOpParams);
+
+  //   lsParams.forEach(function(item){
+  //     var optionParam = document.createElement("option");
+  //     optionParam.setAttribute("value", item.id);
+  //     var optionParamText = document.createTextNode(item.name);
+  //     optionParam.appendChild(optionParamText);
+
+  //     optionParams.appendChild(optionParam);
+  //   })
+
+  //   paramsSelect.appendChild(optionParams);
+  //   row.appendChild(paramsSelect);
+  //   optionParams.addEventListener("change", function(event){
+  //     var param_name = optionParams.options[optionParams.selectedIndex].text;
+  //     reloadElement(row, 1);
+  //     generate_item_for_params(row, param_name);
+
+  //   });
+  // }
+  function generate_item_for_params(row, param_name, param_value){
+    var divInputParams = document.createElement("div");
+    divInputParams.setAttribute("class", "col-md-2");
+
+    var labelInputParams = document.createElement("label");
+    var labelInputParamText = document.createTextNode(param_name + ":");
+    labelInputParams.appendChild(labelInputParamText);
+
+    divInputParams.appendChild(labelInputParams);
+
+    // create input params
+    var inputParam = document.createElement("input");
+    inputParam.setAttribute("class", "form-control");
+    inputParam.setAttribute("type", "text");
+    inputParam.setAttribute("name", param_name);
+    inputParam.setAttribute("value", param_value);
+
+    divInputParams.appendChild(inputParam);
+
+    row.appendChild(divInputParams);
+  }
+
+  function generate_test_script_for_test_case() {
+    // body...
+    test_script_list.forEach(function(item_script){
+      var li = document.createElement("li");
+      li.setAttribute("class", "item-step");
+
+      var rowDiv = document.createElement("div");
+      rowDiv.setAttribute("class", " row step");
+
+      var stepNameDiv = document.createElement("div");
+      stepNameDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+
+      var stepNameLabel = document.createElement("label");
+      var stepNameText = document.createTextNode("Step name:");
+
+      stepNameLabel.appendChild(stepNameText);
+
+      stepNameTextBox = document.createElement("input");
+      stepNameTextBox.setAttribute("class", "form-control")
+      stepNameTextBox.setAttribute("type", "text");
+      stepNameTextBox.setAttribute("value", item_script["name"]);
+
+      stepNameDiv.appendChild(stepNameLabel);
+      stepNameDiv.appendChild(stepNameTextBox);
+      rowDiv.appendChild(stepNameDiv);
+
+      //create div box action
+      var actionDiv = document.createElement("div");
+      actionDiv.setAttribute("class", "col-md-2 col-sm-12 form-group");
+
+      // create lable action
+      var lableAction = document.createElement("label");
+      var textAction = document.createTextNode("Action: ");
+
+      lableAction.appendChild(textAction);
+      actionDiv.appendChild(lableAction);
+      // create select action
+      var selectAction = document.createElement("select");
+      selectAction.setAttribute("class", " form-control");
+      selectAction.setAttribute("name", "action");
+
+      var firstOp = document.createElement("option");
+      firstOp.setAttribute("value", "");
+      var firstOpText = document.createTextNode("Choose Action");
+      firstOp.appendChild(firstOpText);
+
+      selectAction.appendChild(firstOp);
+      actionSelected = "";
+      listActionTest.forEach(function(item){
+        var test_action = item.data;
+        var itemOp = document.createElement("option");
+        itemOp.setAttribute("value", test_action.id);
+        var textItemOp = document.createTextNode(test_action.name);
+        itemOp.appendChild(textItemOp);
+        if(item_script["action_id"] == test_action.id){
+          actionSelected = test_action.name;
+          itemOp.setAttribute("selected", "true");
+        }
+        selectAction.appendChild(itemOp);
+      });
+
+      //add selectAction to div Action
+      actionDiv.appendChild(selectAction);
+      rowDiv.appendChild(actionDiv);
+
+
+      //add 2 button
+      var buttonDiv = document.createElement("div");
+      buttonDiv.setAttribute("class", "btn-action col-sm-12 col-md-2");
+
+      var buttonDrag = document.createElement('div');
+      buttonDrag.setAttribute("class", "btn-action-drag");
+      var iconDrag = document.createElement("i");
+      iconDrag.setAttribute("class", "fa fa-arrows fa-2x");
+      buttonDrag.appendChild(iconDrag);
+
+      var buttonDrop = document.createElement('div');
+      buttonDrop.setAttribute("class", "btn-action-drop");
+      var iconDrop = document.createElement("i");
+      iconDrop.setAttribute("class", "fa fa-trash fa-2x");
+      buttonDrop.appendChild(iconDrop);
+
+      buttonDiv.appendChild(buttonDrag);
+      buttonDiv.appendChild(buttonDrop);
+
+      rowDiv.appendChild(buttonDiv);
+      var listArguments = item_script["arguments"];
+      if(listArguments.length > 0){
+        listArguments.forEach(function(arg){
+          generate_item_for_params(rowDiv, arg["name"], arg["value"]);
+        });
+      }
+      // generate params
+
+      //add rowDiv to li
+      li.appendChild(rowDiv);
+      ul.append(li);
+
+      // add event remove to btnDrop
+      buttonDrop.addEventListener("click",
+        function(event){
+          li.remove();
+      });
+      // generate params of action test
+      selectAction.addEventListener("change",
+        function(event){
+          var item = event.target;
+          var row = event.target.parentElement.parentElement;
+          // var id_test_action =
+          var divSelectAction = row.children[1].children;
+          var list_arguments = getArguments(listActionTest, divSelectAction[1].value);
+          reloadElement(row, 0);
+          list_arguments.forEach(function(item){
+            generate_item_for_params(row, item["name"], "");
+          });
+      });
+
+    });
+  }
+  // function generate_value_for_param(name, value, row){
+  //   var valueDiv = document.createElement("div");
+  //   valueDiv.setAttribute("class", "col-md-2 form-group");
+
+  //   var labelValue = document.createElement("label");
+  //   var labelValueText = document.createTextNode(name + ":");
+  //   labelValue.appendChild(labelValueText);
+  //   valueDiv.appendChild(labelValue);
+
+  //   var inputValue = document.createElement("input");
+  //   inputValue.setAttribute("value", value);
+  //   inputValue.setAttribute("class", "form-control");
+  //   inputValue.setAttribute("type", "text");
+  //   valueDiv.appendChild(inputValue);
+
+  //   row.appendChild(valueDiv);
+  // }
+
+</script>

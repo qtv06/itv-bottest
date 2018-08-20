@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestsuiteModel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Project>
+    <Name>CheckHTML5</Name>
+    <Path>D:\development\automation\ACE\workspace6\projects\CheckHTML5</Path>
+  </Project>
+  <Content>
+    <Name>TestCheckBox</Name>
+    <Description />
+    <Path>D:\development\automation\ACE\workspace6\projects\CheckHTML5\TestSuites\TestCheckBox.xml</Path>
+    <RowObjectives>3</RowObjectives>
+    <RowInitial>7</RowInitial>
+    <RowFinal>31</RowFinal>
+    <Objectives>
+      <Objective>
+        <Row>4</Row>
+        <Name>TO 01</Name>
+        <Description>&lt;Enter test objective tittle&gt;</Description>
+      </Objective>
+    </Objectives>
+    <Initial>
+      <Actions />
+    </Initial>
+    <TestCases>
+      <TestCase>
+        <Row>12</Row>
+        <Id>TC 01</Id>
+        <Title>&lt;Enter test case tittle&gt;</Title>
+        <Objective>
+          <Row>13</Row>
+          <Name>TO 01</Name>
+          <Description>&lt;Enter test objective tittle&gt;</Description>
+        </Objective>
+        <Actions>
+          <Action>
+            <Row>15</Row>
+            <Name>use browser</Name>
+            <Params>
+              <Param>
+                <Name>name</Name>
+                <Value>chrome</Value>
+              </Param>
+            </Params>
+          </Action>
+          <Action>
+            <Row>17</Row>
+            <Name>open</Name>
+            <Params>
+              <Param>
+                <Name>url</Name>
+                <Value>https://ec.alc.co.jp/search_detail/?q=&amp;x=37&amp;y=16&amp;searchbox=1&amp;s2o=1&amp;s1%5B%5D=%E8%8B%B1%E6%96%87%E6%B3%95&amp;s3%5B%5D=&amp;s2%5B%5D=%E6%9C%AC%E3%83%BB%E9%9B%91%E8%AA%8C&amp;s2%5B%5D=%E6%9C%AC%E3%83%BB%E9%9B%91%E8%AA%8C%EF%BC%88%E9%9F%B3%E5%A3%B0%E4%BB%98%E3%81%8D%EF%BC%89&amp;s2%5B%5D=%E9%9F%B3%E5%A3%B0%E3%83%BB%E6%98%A0%E5%83%8F%E6%95%99%E6%9D%90&amp;s2%5B%5D=%E3%81%9D%E3%81%AE%E4%BB%96</Value>
+              </Param>
+            </Params>
+          </Action>
+          <Action>
+            <Row>26</Row>
+            <Name>set control value</Name>
+            <Params>
+              <Param>
+                <Name>layout</Name>
+                <Value>alc</Value>
+              </Param>
+              <Param>
+                <Name>control</Name>
+                <Value>n3c0</Value>
+              </Param>
+              <Param>
+                <Name>value</Name>
+                <Value>true</Value>
+              </Param>
+            </Params>
+          </Action>
+          <Action>
+            <Row>28</Row>
+            <Name>select</Name>
+            <Params>
+              <Param>
+                <Name>layout</Name>
+                <Value>alc</Value>
+              </Param>
+              <Param>
+                <Name>control</Name>
+                <Value>n3c0</Value>
+              </Param>
+              <Param>
+                <Name>items</Name>
+                <Value>"～999円"</Value>
+              </Param>
+            </Params>
+          </Action>
+        </Actions>
+      </TestCase>
+    </TestCases>
+    <Comments>
+      <Comment>
+        <Row>18</Row>
+        <Columns>
+          <Column>
+            <Id>1</Id>
+            <Title />
+          </Column>
+        </Columns>
+      </Comment>
+      <Comment>
+        <Row>19</Row>
+        <Columns>
+          <Column>
+            <Id>1</Id>
+            <Title>select</Title>
+          </Column>
+          <Column>
+            <Id>2</Id>
+            <Title>alc</Title>
+          </Column>
+          <Column>
+            <Id>3</Id>
+            <Title>n3c[]</Title>
+          </Column>
+          <Column>
+            <Id>4</Id>
+            <Title>item 1</Title>
+          </Column>
+        </Columns>
+      </Comment>
+      <Comment>
+        <Row>21</Row>
+        <Columns>
+          <Column>
+            <Id>1</Id>
+            <Title>enter</Title>
+          </Column>
+          <Column>
+            <Id>2</Id>
+            <Title>alc</Title>
+          </Column>
+          <Column>
+            <Id>3</Id>
+            <Title>n3c[]</Title>
+          </Column>
+          <Column>
+            <Id>4</Id>
+            <Title>10,000～29,999円</Title>
+          </Column>
+        </Columns>
+      </Comment>
+      <Comment>
+        <Row>23</Row>
+        <Columns>
+          <Column>
+            <Id>1</Id>
+            <Title />
+          </Column>
+        </Columns>
+      </Comment>
+      <Comment>
+        <Row>24</Row>
+        <Columns>
+          <Column>
+            <Id>1</Id>
+            <Title>click</Title>
+          </Column>
+          <Column>
+            <Id>2</Id>
+            <Title>alc</Title>
+          </Column>
+          <Column>
+            <Id>3</Id>
+            <Title>n3c0</Title>
+          </Column>
+          <Column>
+            <Id>4</Id>
+            <Title>left</Title>
+          </Column>
+        </Columns>
+      </Comment>
+    </Comments>
+    <Final>
+      <Actions />
+    </Final>
+    <Variables />
+  </Content>
+</TestsuiteModel>

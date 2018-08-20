@@ -1,2 +1,42 @@
-<h1>TestSuits#edit</h1>
-<p>Find me in app/views/test_suits/edit.html.erb</p>
+<%= form_for @test_suit, url: test_suit_path, method: :patch do |f| %>
+  <div class="btn-action">
+    <%= link_to "", test_suits_path, class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= f.submit "", class: "btn-save btn-icon", "data-toggle" => "tooltip", title: "Save Test Suit" %>
+    <%= link_to "", new_test_suit_test_case_path(@test_suit), class: "btn-add btn-icon", "data-toggle" => "tooltip", title: "Add Test Case" %>
+    <%= link_to "", "#", class: "btn-share btn-icon", "data-toggle" => "tooltip", title: "Share Test Case" %>
+    <%= link_to "", "#", class: "btn-notification btn-icon", "data-toggle" => "tooltip", title: "Notifications" %>
+  </div>
+  <div class="row mg-20">
+    <div class="col-md-2 col-sm-4 label-test-suit">
+      <%= f.label "Test Suit Name" %>
+    </div>
+    <div class="col-md-4 col-sm-6 input-test-suite">
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Test Cases</th>
+      <th class="th-icon">Edit</th>
+      <th class="th-icon">Run</th>
+      <th class="th-icon">Export</th>
+      <th class="th-icon">Duplicate</th>
+      <th class="th-icon">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test_cases.reverse.each do |t_case| %>
+      <tr>
+        <td><span class="icon-file"></span><%= link_to t_case.name, edit_test_suit_test_case_path(@test_suit, t_case) %></td>
+        <td class="icon-action"><%= link_to "", edit_test_suit_test_case_path(@test_suit, t_case), class: "glyphicon glyphicon-pencil" %></td>
+        <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+        <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+        <td class="icon-action"><%= link_to "", "#", class: "fa fa-clone" %></td>
+        <td class="icon-action"><%= link_to "", test_suit_test_case_path(@test_suit, t_case), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
