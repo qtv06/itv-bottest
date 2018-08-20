@@ -9,9 +9,9 @@ module TestSuitsHelper
       }
     end
     test_suit_folder = "test_suit#{test_suit['id']}"
-    Dir.mkdir("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}") unless File.exist?("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}")
+    Dir.mkdir("../../../data-bottest/user#{current_user.id}/test_suites/#{test_suit_folder}") unless File.exist?("../../../data-bottest/user#{current_user.id}/test_suites/#{test_suit_folder}")
 
-    File.open("lib/xml/user#{current_user.id}/test_suites/#{test_suit_folder}/test_suit.xml", "w+") do |file|
+    File.open("../../../data-bottest/user#{current_user.id}/test_suites/#{test_suit_folder}/test_suit.xml", "w+") do |file|
       file << builder.to_xml
     end
   end
