@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def hello
+
+  end
+
   def read_action
     @test_actions = []
     @action_have_text = []
