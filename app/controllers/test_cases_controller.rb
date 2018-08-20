@@ -19,9 +19,10 @@ class TestCasesController < ApplicationController
       config.git_ssh = 'git@github.com:vovanquang12cntt/itv-bottest.git'
     end
     g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
-
+    g.config('user.name', ENV['GIT_USERNAME'])
+    g.config('user.email', ENV['GIT_EMAIL'])
     g.branch('working-with-git')
-    # g.config('remote.origin.push', 'refs/heads/master:refs/heads/master')
+    # g.config('remote.https.push', 'refs/heads/master:refs/heads/master')
 
     @test_case = TestCase.new
     name = params[:test_case][:name]
@@ -35,7 +36,7 @@ class TestCasesController < ApplicationController
       g.add "lib/xml/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
 
       g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
-      g.push
+      g.push(remote = 'https', branch = 'working-with-git', opts = {})
       # debugger
       flash[:success] = "Add Successful!!"
       redirect_to edit_test_suit_path(@test_suit)
