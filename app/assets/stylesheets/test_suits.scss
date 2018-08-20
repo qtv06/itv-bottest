@@ -101,3 +101,26 @@ ul.list-step{
   margin-top: 20px;
   margin-left: -38px;
 }
+
+ul.item-case-change {
+  margin-left: -32px !important;
+}
+ul.item-case-change li {
+  list-style: none;
+  line-height: 40px;
+  /* background: #e8e8e8; */
+  background-color: #b8c6db;
+  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  margin-bottom: 5px;
+  border-radius: 4px;
+  padding: 0px 9px;
+  color: #158492;
+  /* border: 1px solid rgba(0,0,0,.125); */
+  transition: all 0.4s;
+  span{
+    background-image: url(icon-file.png);
+  }
+}
+ul.item-case-change li:hover{
+  box-shadow: 1px 2px 3px rgba(0,0,0,.125);
+}

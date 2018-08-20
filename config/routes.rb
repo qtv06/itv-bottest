@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post "test_scripts/create"
+  get "test_suits/commit"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

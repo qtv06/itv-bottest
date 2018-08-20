@@ -36,7 +36,9 @@ class TestSuitsController < ApplicationController
     if params[:id]
       @test_cases = read_test_cases(params[:id])
     end
-    # render xml: test_suit_doc
+
+    gon.test_suit = @test_suit
+
   end
 
   def update
@@ -93,6 +95,14 @@ class TestSuitsController < ApplicationController
     end
 
     redirect_to root_path
+  end
+
+  def commit
+    # debugger
+    test_suit_id = params["test_suit"]["id"]
+    test_case_changed = load_test_cases_changed test_suit_id
+
+    render json: test_case_changed
   end
 
   private

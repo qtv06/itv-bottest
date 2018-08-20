@@ -394,11 +394,11 @@
 
       rowDiv.appendChild(buttonDiv);
       var listArguments = item_script["arguments"];
-      if(listArguments.length > 0){
+      // if(listArguments.length > 0){
         listArguments.forEach(function(arg){
           generate_item_for_params(rowDiv, arg["name"], arg["value"]);
         });
-      }
+      // }
       // generate params
 
       //add rowDiv to li

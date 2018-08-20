@@ -2,6 +2,7 @@
 <TestCase>
   <Id>1</Id>
   <Name>Search address Duplicate</Name>
+  <Status>Commited</Status>
   <CreatedAt>2018-08-16 07:25:08 UTC</CreatedAt>
   <steps>
     <step>
