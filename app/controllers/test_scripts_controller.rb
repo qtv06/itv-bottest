@@ -4,10 +4,12 @@ class TestScriptsController < ApplicationController
   def create
     test_suit_id = params["test_suit_id"]
     ls_test_scripts = params["lsTestScript"]
+    test_case = params["test_case"]
     builder = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       xml.TestCase{
-        xml.Id params['test_case_id']
+        xml.Id test_case['id']
         xml.Name params['test_case_name']
+        xml.Status  test_case['status']
         xml.CreatedAt Time.current
         xml.steps{
         JSON.parse(ls_test_scripts).each do |script|
@@ -28,7 +30,7 @@ class TestScriptsController < ApplicationController
         }
       }
     end
-    File.open("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{params['test_case_id']}.xml", "w+") do |file|
+    File.open("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{test_case['id']}.xml", "w+") do |file|
       file << builder.to_xml
     end
     render html: "Test Case #{params['test_case_name']} succesfully saved!!"

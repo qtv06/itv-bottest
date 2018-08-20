@@ -1,3 +1,4 @@
 status:
   change: "Change"
   commited: "Commited"
+dir_store_data: "../../../data-bottest"
