@@ -15,15 +15,6 @@ class TestCasesController < ApplicationController
   end
 
   def create
-    # Git.configure do |config|
-    #   config.git_ssh = 'git@github.com:vovanquang12cntt/itv-bottest.git'
-    # end
-    # g = Git.open(working_dir = "~/Desktop/myDocument/rails/endtest", :log => Logger.new(STDOUT))
-    # g.config('user.name', ENV['GIT_USERNAME'])
-    # g.config('user.email', ENV['GIT_EMAIL'])
-    # g.branch('working-with-git')
-    # g.config('remote.https.push', 'refs/heads/master:refs/heads/master')
-
     @test_case = TestCase.new
     name = params[:test_case][:name]
     if !name.blank?
@@ -33,12 +24,6 @@ class TestCasesController < ApplicationController
       @test_case.created_at = Time.current
 
       write_test_case_to_file_xml(@test_case, @test_suit.id)
-
-      # g.add "../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"
-
-      # g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
-      # g.push(remote = 'https', branch = 'working-with-git', opts = {})
-      # debugger
       flash[:success] = "Add Successful!!"
       redirect_to edit_test_suit_path(@test_suit)
     else
@@ -49,7 +34,7 @@ class TestCasesController < ApplicationController
 
   def edit
     lsTestScript = []
-    doc_script = Nokogiri::XML(File.open("../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"));
+    doc_script = Nokogiri::XML(File.open("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{@test_case.id}.xml"));
 
     doc_script.xpath("//step").each do |script|
 
@@ -68,35 +53,36 @@ class TestCasesController < ApplicationController
     end
     gon.test_suit_id = @test_suit.id
     gon.test_actions = @test_actions
-    gon.test_case_id = @test_case.id
+    gon.test_case = @test_case
     gon.test_scripts = lsTestScript
     gon.action_have_text = @action_have_text
   end
 
   def update
-    count = 0
-    test_case = TestCase.new
-    name = params[:test_case][:name]
-    @test_cases.each do |tc|
-      if tc.id == params[:id].to_i
-        tc.name = name
-        test_case = tc
-        count += 1
-        break
-      end
-    end
-
-    if count > 0
-      write_test_case_to_file_xml(test_case, @test_suit.id)
-      flash[:success] = "Test case #{name} successfully updated"
-    else
-      flash[:danger] = I18n.t "flash.danger"
-    end
-    redirect_to edit_test_suit_test_case_path(@test_suit, @test_case)
+    # debugger
+    # count = 0
+    # test_case = TestCase.new
+    # name = params[:test_case][:name]
+    # @test_cases.each do |tc|
+    #   if tc.id == params[:id].to_i
+    #     tc.name = name
+    #     test_case = tc
+    #     count += 1
+    #     break
+    #   end
+    # end
+    # debugger
+    # if count > 0
+    #   write_test_case_to_file_xml(test_case, @test_suit.id)
+    #   flash[:success] = "Test case #{name} successfully updated"
+    # else
+    #   flash[:danger] = I18n.t "flash.danger"
+    # end
+    # redirect_to edit_test_suit_test_case_path(@test_suit, @test_case)
   end
 
   def destroy
-    test_case_file = "../../../data-bottest/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{params['id']}.xml"
+    test_case_file = "#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{@test_suit.id}/test_case#{params['id']}.xml"
     if File.exist? test_case_file
       FileUtils.rm_rf test_case_file
       flash[:success] = "Test case #{@test_case.name} successfully deleted"

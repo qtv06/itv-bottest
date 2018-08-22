@@ -1,24 +1,24 @@
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+<%= form_for @user, id: "signUpForm" do |f| %>
+  <div id="signUpTitleContainer">Sign Up for the Free Plan</div>
+  <div id="rainbowForSignup"></div>
+  <div id="containerForUserNameInput">
+    <%= f.text_field :name, id:"userNameInput", class:"doRemoveFront registerInput", title:"User Name", placeholder:"Full Name" %>
   </div>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control" %>
+  <div id="containerForUserEmailInput">
+    <%= f.email_field :email, id:"userEmailInput", class:"doRemoveFront registerInput", title:"User Email", placeholder:"Email" %>
   </div>
-  <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: "form-control" %>
+  <div id="containerForUserAdressInput">
+    <%= f.text_field :address, id:"userAddressInput", class:"doRemoveFront registerInput", title:"User Address", placeholder:"Address" %>
   </div>
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
+  <div id="containerForUserPasswordInput">
+    <%= f.password_field :password, id:"userPasswordInput", class:"doRemoveFront registerInput", title:"User Password", placeholder:"Password" %>
   </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
+  <div id="containerForConfirmUserPasswordInput">
+    <%= f.password_field :password_confirmation, id:"userConfirmPasswordInput", class:"doRemoveFront registerInput", title:"User Confirm Password", placeholder:"Confirm Password" %>
   </div>
-  <%= f.submit "Create Account", class: "btn btn-primary" %>
-
+  <div id="signUpButton">
+   <%= f.submit "Sign Up", class:'btn btn-success' %>
+  </div>
+  <div id="rainbowForSignup"></div>
 <% end %>
+

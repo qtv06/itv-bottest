@@ -1,12 +1,22 @@
-<%= form_for :session, url: login_path do |f| %>
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control" %>
+<%= form_for :session, url: login_path, id: "signUpForm" do |f| %>
+  <div id="signUpTitleContainer">Log In</div>
+  <div id="rainbowForSignup"></div>
+  <div id="containerForUserEmailInput">
+    <%= f.email_field :email, id:"userEmailInput", class:"doRemoveFront registerInput", title:"User Email", placeholder:"Email" %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
+  <div id="containerForUserPasswordInput">
+    <%= f.password_field :password, id:"userPasswordInput", class:"doRemoveFront registerInput", title:"User Password", placeholder:"Password" %>
   </div>
-  <%= f.submit "Login", class: "btn btn-primary" %>
+  <%= f.label :remember_me, class: "checkbox inline" do %>
+  <%= f.check_box :remember_me %>
+  <span>Remember me on this computer</span>
+  <% end %>
+  <div id="signUpButton">
+   <%= f.submit "Log In", class:'btn btn-success' %>
+  </div>
+  <div id="forgotPass">
+  <%= link_to "I forgot my password", new_password_reset_path %>
+  </div>
+  <div id="rainbowForSignup"></div>
 <% end %>
+
