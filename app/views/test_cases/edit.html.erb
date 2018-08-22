@@ -1,4 +1,4 @@
-<%= form_for [@test_suit, @test_case], url: test_suit_test_case_path, method: :patch do |f| %>
+<%= form_for [@test_suit, @test_case], url: test_suit_test_case_path, method: :put do |f| %>
   <div class="btn-action">
     <%= link_to "", edit_test_suit_path(@test_suit), class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
     <%= link_to "",'', class: "btn-save-test-script btn-save btn-icon save-test-script", "data-toggle" => "tooltip", title: "Save Test Case" %>
@@ -72,7 +72,7 @@
           data: {
             'test_suit_id': gon.test_suit_id,
             'test_case_name': $('#test_case_name').val(),
-            'test_case_id': gon.test_case_id,
+            'test_case': gon.test_case,
             'lsTestScript': jsonList
           },
           success : function(data){

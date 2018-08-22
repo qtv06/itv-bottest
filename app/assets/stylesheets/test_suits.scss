@@ -103,7 +103,11 @@ ul.list-step{
 }
 
 ul.item-case-change {
-  margin-left: -32px !important;
+  margin-left: -40px !important;
+  p{
+    margin-left: -10px;
+    color: red;
+  }
 }
 ul.item-case-change li {
   list-style: none;
@@ -118,9 +122,13 @@ ul.item-case-change li {
   /* border: 1px solid rgba(0,0,0,.125); */
   transition: all 0.4s;
   span{
-    background-image: url(icon-file.png);
+    margin-right: 10px;
   }
 }
 ul.item-case-change li:hover{
   box-shadow: 1px 2px 3px rgba(0,0,0,.125);
+}
+.btn-save-commit{
+  background-image: linear-gradient( 135deg, #3C8CE7 10%, #00E4FF 100%) !important;
+  border: 1px solid #73eaad;
 }

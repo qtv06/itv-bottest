@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
   post "test_scripts/create"
-  get "test_suits/commit"
+  get "test_suits/get_test_case_change"
+  get "/commit", to: "commits#commit"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
