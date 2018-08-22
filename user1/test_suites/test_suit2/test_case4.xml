@@ -2,6 +2,7 @@
 <TestCase>
   <Id>4</Id>
   <Name>asds</Name>
-  <Status>Change</Status>
-  <CreatedAt>2018-08-21 16:11:12 UTC</CreatedAt>
+  <Status>Commited</Status>
+  <CreatedAt>2018-08-22 08:29:19 UTC</CreatedAt>
+  <steps/>
 </TestCase>
