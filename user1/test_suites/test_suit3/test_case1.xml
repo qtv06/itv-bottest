@@ -3,25 +3,25 @@
   <Id>1</Id>
   <Name>sdf</Name>
   <Status>Commited</Status>
-  <CreatedAt>2018-08-22 07:50:07 UTC</CreatedAt>
+  <CreatedAt>2018-08-22 08:01:54 UTC</CreatedAt>
   <steps>
     <step>
-      <name>ds</name>
-      <IdAction>1</IdAction>
+      <name>ad</name>
+      <IdAction>2</IdAction>
       <arguments>
         <argument>
           <name>arguments</name>
-          <value>[{"name"=&gt;"layout", "value"=&gt;"wer"}, {"name"=&gt;"control", "value"=&gt;"wer"}, {"name"=&gt;"value", "value"=&gt;"wer"}]</value>
+          <value>[{"name"=&gt;"layout", "value"=&gt;"asd"}, {"name"=&gt;"control", "value"=&gt;"asd"}, {"name"=&gt;"type", "value"=&gt;"we"}]</value>
         </argument>
       </arguments>
     </step>
     <step>
-      <name>sdf</name>
-      <IdAction>1</IdAction>
+      <name>asd</name>
+      <IdAction>2</IdAction>
       <arguments>
         <argument>
           <name>arguments</name>
-          <value>[{"name"=&gt;"layout", "value"=&gt;"sdf"}, {"name"=&gt;"control", "value"=&gt;"sdf"}, {"name"=&gt;"value", "value"=&gt;"sdf"}]</value>
+          <value>[{"name"=&gt;"layout", "value"=&gt;"asd"}, {"name"=&gt;"control", "value"=&gt;"asd"}, {"name"=&gt;"type", "value"=&gt;"qwe"}]</value>
         </argument>
       </arguments>
     </step>
