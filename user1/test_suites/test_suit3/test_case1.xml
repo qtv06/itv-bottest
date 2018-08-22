@@ -2,24 +2,16 @@
 <TestCase>
   <Id>1</Id>
   <Name>sdf</Name>
-  <Status>Change</Status>
-  <CreatedAt>2018-08-22 04:00:53 UTC</CreatedAt>
+  <Status>Commited</Status>
+  <CreatedAt>2018-08-22 07:50:07 UTC</CreatedAt>
   <steps>
     <step>
       <name>ds</name>
       <IdAction>1</IdAction>
       <arguments>
         <argument>
-          <name>layout</name>
-          <value>wer</value>
-        </argument>
-        <argument>
-          <name>control</name>
-          <value>wer</value>
-        </argument>
-        <argument>
-          <name>value</name>
-          <value>wer</value>
+          <name>arguments</name>
+          <value>[{"name"=&gt;"layout", "value"=&gt;"wer"}, {"name"=&gt;"control", "value"=&gt;"wer"}, {"name"=&gt;"value", "value"=&gt;"wer"}]</value>
         </argument>
       </arguments>
     </step>
@@ -28,16 +20,8 @@
       <IdAction>1</IdAction>
       <arguments>
         <argument>
-          <name>layout</name>
-          <value>sdf</value>
-        </argument>
-        <argument>
-          <name>control</name>
-          <value>sdf</value>
-        </argument>
-        <argument>
-          <name>value</name>
-          <value>sdf</value>
+          <name>arguments</name>
+          <value>[{"name"=&gt;"layout", "value"=&gt;"sdf"}, {"name"=&gt;"control", "value"=&gt;"sdf"}, {"name"=&gt;"value", "value"=&gt;"sdf"}]</value>
         </argument>
       </arguments>
     </step>
