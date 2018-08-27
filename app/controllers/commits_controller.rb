@@ -17,9 +17,8 @@ class CommitsController < ApplicationController
     g.branch('data-bottest')
     g.config('remote.https.push', 'refs/heads/master:refs/heads/master')
 
-    test_caces.to_a.each do |tc|
-      debugger
-      g.add "user#{current_user.id}/test_suites/test_suit#{test_suit.id}/test_case#{tc.to_a[1]['id']}.xml"
+    JSON.parse(test_caces).each do |tc|
+      g.add "user#{current_user.id}/test_suites/test_suit#{test_suit.id}/test_case#{tc['id']}.xml"
     end
     # g.commit "Test Case #{@test_case.name} just add by #{current_user.name}"
     g.commit "#{content}"

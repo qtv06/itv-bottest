@@ -134,7 +134,7 @@
           url: '/commit',
           type: 'GET',
           data: {
-            test_cases: testCases,
+            test_cases: JSON.stringify(testCases),
             test_suit: gon.test_suit,
             content_commit: content
           },
