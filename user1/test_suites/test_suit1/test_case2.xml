@@ -2,6 +2,7 @@
 <TestCase>
   <Id>2</Id>
   <Name>Click remember button</Name>
-  <Status>Change</Status>
-  <CreatedAt>2018-08-09 10:49:58 UTC</CreatedAt>
+  <Status>Commited</Status>
+  <CreatedAt>2018-08-27 11:13:38 UTC</CreatedAt>
+  <steps/>
 </TestCase>
