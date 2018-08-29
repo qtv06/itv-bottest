@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def read_test_suites
     @test_suites = []
-    @big_id = 1
+    @big_id = 0
     Dir.glob("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/*/test_suit.xml").each do |file|
       doc = Nokogiri::XML(File.open(file))
 

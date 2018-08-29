@@ -88,7 +88,8 @@
     $('.btn-commit').click(function(event) {
       /* Act on the event */
       $("#contentCommit").attr('placeholder', 'ex: Just change test_case');
-        $('.label-commit').css('color', 'black');
+      $('.btn-save-commit').removeAttr('disabled', 'disabled');
+      $('.label-commit').css('color', 'black');
       $.ajax({
         url: '/test_suits/get_test_case_change',
         type: 'GET',
@@ -101,7 +102,7 @@
             $('.btn-save-commit').attr('disabled', 'disabled');
           }else{
             $('.badge').remove();
-            $('#lineModalLabel').append("<span class='badge'>" + data.length + "</span>");
+            $('#lineModalLabel').append("<span class='badge number-item'>" + data.length + "</span>");
             data.forEach(function(item){
               var li = $("<li class='item-tc'></li>");
               $(li).attr('id-item', item["id"]);
@@ -110,12 +111,12 @@
 
               $(li).append(span);
               $(li).append(item["name"]);
+              $(li).append("<span class='glyphicon glyphicon-trash trash-float-right' aria-hidden='true'></span>")
               ul_tc.append(li);
             })
           }
         }
       });
-
     });
     $('.btn-save-commit').click(function(event) {
       var content = $("#contentCommit").val();
@@ -145,6 +146,16 @@
             toastr.success(data);
           }
         })
+      }
+    });
+    $('body').on('click', '.trash-float-right', function(event){
+      var currentItem = $('.number-item').text();
+      var remainItem = parseInt(currentItem) - 1;
+      $('.number-item').text(remainItem);
+      $(this).parent().remove();
+      if(remainItem < 1){
+        $('.item-case-change').append('<p>Nothing changed</p>');
+        $('.btn-save-commit').attr('disabled', 'disabled');
       }
     });
   });
