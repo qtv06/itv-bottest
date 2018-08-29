@@ -9,7 +9,7 @@ class TestScriptsController < ApplicationController
       xml.TestCase{
         xml.Id test_case['id']
         xml.Name params['test_case_name']
-        xml.Status  test_case['status']
+        xml.Status "Change"
         xml.CreatedAt Time.current
         xml.steps{
         JSON.parse(ls_test_scripts).each do |script|
@@ -34,9 +34,5 @@ class TestScriptsController < ApplicationController
       file << builder.to_xml
     end
     render html: "Test Case #{params['test_case_name']} succesfully saved!!"
-  end
-
-  def write_test_script_to_xml
-
   end
 end

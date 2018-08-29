@@ -132,3 +132,10 @@ ul.item-case-change li:hover{
   background-image: linear-gradient( 135deg, #3C8CE7 10%, #00E4FF 100%) !important;
   border: 1px solid #73eaad;
 }
+.trash-float-right{
+  float: right;
+  color: red !important;
+  line-height: 40px !important;
+  cursor: pointer;
+  font-size: 15px;
+}

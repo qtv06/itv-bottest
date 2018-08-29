@@ -1,2 +1,3 @@
-GMAIL_USERNAME: "15i1lethibe@gmail.com"
-GMAIL_PASSWORD: "19971010"
+development:
+  GMAIL_USERNAME: "15i1lethibe@gmail.com"
+  GMAIL_PASSWORD: "bele10101997"
