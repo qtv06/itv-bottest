@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCase>
   <Id>6</Id>
-  <Name>long</Name>
-  <Status>Change</Status>
-  <CreatedAt>2018-08-28 03:28:34 UTC</CreatedAt>
+  <Name>dáđasd</Name>
+  <Status>Commited</Status>
+  <CreatedAt>2018-08-29 03:20:26 UTC</CreatedAt>
+  <steps/>
 </TestCase>
