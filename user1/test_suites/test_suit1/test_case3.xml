@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCase>
   <Id>3</Id>
-  <Name>This is a new TestCase</Name>
+  <Name>This is a new TestCasefdsf</Name>
   <Status>Commited</Status>
-  <CreatedAt>2018-08-20 07:19:02 UTC</CreatedAt>
+  <CreatedAt>2018-08-29 03:43:36 UTC</CreatedAt>
+  <steps>
+    <step>
+      <name>fdf</name>
+      <IdAction>1</IdAction>
+      <arguments>
+        <argument>
+          <name>layout</name>
+          <value>fs</value>
+        </argument>
+        <argument>
+          <name>control</name>
+          <value>fds</value>
+        </argument>
+        <argument>
+          <name>value</name>
+          <value>dsfs</value>
+        </argument>
+      </arguments>
+    </step>
+  </steps>
 </TestCase>
