@@ -2,19 +2,21 @@ module TestCasesHelper
   def read_test_cases test_suit_id
     test_cases = []
     @big_id_tc = 0
-    filename = "test_suit" + test_suit_id + ".xml"
+    # filename = "test_suit" + test_suit_id + ".xml"
     Dir.glob("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case*.xml").each do |file|
       test_suit_doc = Nokogiri::XML(File.open(file))
       test_suit_doc.xpath("TestCase").each do |tc|
-        test_case = TestCase.new
-        test_case.name = tc.at_xpath("Name").text
-        test_case.id = tc.at_xpath("Id").text
-        test_case.status = tc.at_xpath("Status").text
-        @big_id_tc = @big_id_tc > test_case.id ? @big_id_tc : test_case.id
-        test_cases << test_case
+        # test_case = TestCase.new
+        obj_testcase = {}
+        # byebug
+        obj_testcase["name"] = tc.at_xpath("Name").text
+        obj_testcase["id"] = tc.at_xpath("Id").text
+        obj_testcase["status"] = tc.at_xpath("Status").text
+        @big_id_tc = @big_id_tc > obj_testcase["id"].to_i ? @big_id_tc : obj_testcase["id"].to_i
+        test_cases << obj_testcase
       end
     end
-    return test_cases
+      test_cases
   end
 
   def write_test_case_to_file_xml(test_case, test_suit_id)
@@ -92,5 +94,33 @@ module TestCasesHelper
     File.open("#{Settings.dir_store_data}/user#{current_user.id}/test_suites/test_suit#{test_suit_id}/test_case#{test_case['id']}.xml", "w+") do |file|
       file << builder.to_xml
     end
+  end
+
+  def read_action
+    @test_actions = []
+    doc = Nokogiri::XML(File.open("#{Settings.dir_store_data}/actions.xml"))
+    doc.xpath("//action").each do |action|
+      #test_action = TestAction.new
+      obj = {}
+      # byebug
+      # test_action.id = action.at_xpath("definition//id").text
+      obj["id"] = action.at_xpath("definition//id").text
+      obj["name"] = action.at_xpath("language//en//name").text
+      obj["description"] = action.at_xpath("language//en//description").text
+      
+
+      arguments = []
+      action.xpath("language//en//arguments//argument").each do |arg|
+        argument = {}
+        argument["name"] = arg.at_xpath("name").text
+        argument["type"] = arg.at_xpath("type").text
+        arguments << argument
+      end
+
+      obj["argument"] = arguments
+     
+      @test_actions << obj
+    end
+    @test_actions
   end
 end

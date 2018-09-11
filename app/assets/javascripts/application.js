@@ -18,4 +18,5 @@
 //= require select2
 //= require toastr
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require test_case_edit

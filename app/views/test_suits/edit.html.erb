@@ -2,7 +2,7 @@
   <div class="btn-action">
     <%= link_to "", test_suits_path, class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
     <%= f.submit "", class: "btn-save btn-icon", "data-toggle" => "tooltip", title: "Save Test Suit" %>
-    <%= link_to "", new_test_suit_test_case_path(@test_suit), class: "btn-add btn-icon", "data-toggle" => "tooltip", title: "Add Test Case" %>
+    <%= link_to "", new_test_suit_test_case_path(test_suit_id: @test_suit_id), class: "btn-add btn-icon", "data-toggle" => "tooltip", title: "Add Test Case" %>
     <%= link_to "", "#", class: "btn-share btn-icon", "data-toggle" => "tooltip", title: "Share Test Case" %>
     <%= link_to "", "#", class: "btn-notification btn-icon", "data-toggle" => "tooltip", title: "Notifications" %>
   </div>
@@ -29,19 +29,20 @@
     </tr>
   </thead>
   <tbody>
-    <% @test_cases.reverse.each do |t_case| %>
+    <% @test_cases.each do |t_case| %>
+
       <tr>
-        <td><span class="icon-file"></span><%= link_to t_case.name, edit_test_suit_test_case_path(@test_suit, t_case) %></td>
-        <td class="icon-action"><%= link_to "", edit_test_suit_test_case_path(@test_suit, t_case), class: "glyphicon glyphicon-pencil" %></td>
-        <% if t_case.status == "Commited" %>
+        <td><span class="icon-file"></span><%= link_to t_case["name"], edit_test_suit_test_case_path(test_suit_id: @test_suit_id, id: t_case["id"]) %></td>
+        <td class="icon-action"><%= link_to "", edit_test_suit_test_case_path(test_suit_id: @test_suit_id, id: t_case["id"]), class: "glyphicon glyphicon-pencil" %></td>
+        <% if t_case["status"] == "Commited" %>
          <td class="icon-action"><span class="label label-success">
         <% else %>
           <td class="icon-action"><span class="label label-primary">
         <% end %>
-        <%= t_case.status %></span></td>
+        <%= t_case["status"] %></span></td>
         <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
         <td class="icon-action"><%= link_to "", "#", class: "fa fa-clone" %></td>
-        <td class="icon-action"><%= link_to "", test_suit_test_case_path(@test_suit, t_case), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+        <td class="icon-action"><%= link_to "", test_suit_test_case_path(test_suit_id: @test_suit_id, id: t_case["id"]), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
       </tr>
     <% end %>
   </tbody>

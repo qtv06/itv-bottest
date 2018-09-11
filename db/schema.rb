@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_191415) do
+ActiveRecord::Schema.define(version: 2018_09_07_092934) do
 
   create_table "action_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2018_08_20_191415) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "layouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "width"
+    t.string "height"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_layouts_on_user_id"
   end
 
   create_table "params", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,6 +106,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_191415) do
     t.datetime "reset_sent_at"
   end
 
+  add_foreign_key "layouts", "users"
   add_foreign_key "params", "test_actions"
   add_foreign_key "test_actions", "action_types"
   add_foreign_key "test_cases", "test_suits"

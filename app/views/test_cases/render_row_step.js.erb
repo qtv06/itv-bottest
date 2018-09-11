@@ -1,0 +1,5 @@
+<% if @new_step_script %>
+	$("#<%= @id_row_step %>").html("<%= escape_javascript(render 'row_step') %>")
+<% else %>
+	$("#<%= @id_row_step %>").html("<%= escape_javascript(render 'row_step', test_script: @test_script) %>")
+<% end %>

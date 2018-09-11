@@ -1,0 +1,58 @@
+ <div class="row step">
+	<div class="col-md-2 col-sm-12 form-group">
+		<%= label_tag :step_name, "Step name:" %>
+		<% value_step_name = ""
+			if defined?(test_script) != nil
+				value_step_name = test_script["name"]
+			end
+		%>
+		<%= text_field_tag :step_name, value_step_name, :class=> "form-control" %>
+	</div>
+	<div class="col-md-2 col-sm-12 form-group">
+		<%= label_tag :action, "Action:" %>
+		<% if defined?(test_script) != nil
+				@value_selected = test_script["action_id"]
+				if @change_action
+					@value_selected = @actions_select
+				end
+			else
+				@value_selected = ""
+			end
+		%>
+			
+		<%= select_tag :action, options_for_select(@actions.collect { |at| [at["id"], at["id"]]}, @value_selected), :class=> "form-control select-action" %>
+
+		<%= hidden_field_tag "test_suit_id", @test_suit_id, :class => "test_suit_id" %>
+		<%= hidden_field_tag "test_case_id", @test_case_id, :class => "test_case_id" %>
+	</div>
+	<% if !@add_row %>
+		<% if defined?(test_script) != nil
+				@action = @actions.select { |at| at["id"] == test_script["action_id"] }
+				end
+			if @change_action or defined?(test_script) == nil
+				@action = @actions.select { |at| at["id"] ==  @actions_select }
+			end
+			@action[0]["argument"].each do |arg|
+				if @change_action
+					@value = ""
+				else
+					name_argument = arg["name"] 
+					argument_test_script = test_script["arguments"].select { |arg_sl| arg_sl["name"] == name_argument}
+					@value = argument_test_script[0]["value"]
+				end
+		%>
+			<div class="col-md-2 col-sm-12 form-group">
+				<%= label_tag "#{arg["name"]}", arg["name"] %>
+				<%= text_field_tag "#{arg["name"]}", @value, :class=> "form-control" %>
+			</div>
+		<% end %>
+	<% end %>
+	<div class="col-md-2 col-sm-12 btn-action">
+		<div class="btn-action-drag">
+			<i class="fa fa-arrows fa-2x"></i>
+		</div>
+		<div class="btn-action-drop">
+			<i class="fa fa-trash fa-2x"></i>
+		</div>
+	</div>
+</div>

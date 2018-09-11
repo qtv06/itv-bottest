@@ -36,21 +36,22 @@ class ApplicationController < ActionController::Base
 
   def read_action
     @test_actions = []
-    @action_have_text = []
     doc = Nokogiri::XML(File.open("#{Settings.dir_store_data}/actions.xml"))
     doc.xpath("//action").each do |action|
-      test_action = TestAction.new
+      #test_action = TestAction.new
       obj = {}
-      test_action.id = action.at_xpath("definition//id").text
-      test_action.name = action.at_xpath("definition//name").text
-      obj["data"] = test_action
+      # byebug
+      # test_action.id = action.at_xpath("definition//id").text
+      obj["id"] = action.at_xpath("definition//id").text
+      obj["name"] = action.at_xpath("language//en//name").text
+      obj["description"] = action.at_xpath("language//en//description").text
+      
 
       arguments = []
       action.xpath("language//en//arguments//argument").each do |arg|
         argument = {}
         argument["name"] = arg.at_xpath("name").text
         argument["type"] = arg.at_xpath("type").text
-
         arguments << argument
       end
 

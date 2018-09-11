@@ -1,0 +1,20 @@
+<%= form_for @layout do |f| %>
+  <div class="btn-action">
+    <%= link_to "", layouts_path, class: "btn-back btn-icon", "data-toggle" => "tooltip", title: "Back" %>
+    <%= f.submit "", class: "btn-save btn-icon" %>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <%= f.label "Layout Name" %>
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+    <div class="col-md-2">
+      <%= f.label "Width" %>
+      <%= f.text_field :width, class: "form-control"%>
+    </div>
+    <div class="col-md-2">
+      <%= f.label "Height" %>
+      <%= f.text_field :height, class: "form-control"%>
+    </div>
+  </div>
+<% end %>

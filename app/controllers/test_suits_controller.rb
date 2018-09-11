@@ -5,7 +5,7 @@ class TestSuitsController < ApplicationController
   before_action :authenticate_user!
   before_action :read_test_suites, except: %i(new)
   before_action :read_test_suites_of_user, only: :index
-  before_action :find_testsuit_for_edit, only: %i(edit update)
+  # before_action :find_testsuit_for_edit, only: %i(edit update)
 
   def index
   end
@@ -32,11 +32,13 @@ class TestSuitsController < ApplicationController
   end
 
   def edit
+    @test_suit = TestSuit.new
     @test_cases = []
     if params[:id]
       @test_cases = read_test_cases(params[:id])
+      @test_suit_id = params[:id]
     end
-
+    # debugger
     gon.test_suit = @test_suit
 
   end

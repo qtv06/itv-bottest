@@ -1,0 +1,55 @@
+<div class="container">
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Test Suites</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Screen List</a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+  <div id="home" class="container tab-pane active"><br>
+    <h3>Menu 2</h3>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+  </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <div class="add-folder-img">
+        <%= link_to image_tag("icon-add-folder"), new_layout_path %>
+      </div>
+    <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Web Test Suites</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th class="th-icon">Edit</th>
+      <th class="th-icon">Crawl</th>
+      <th class="th-icon">Export</th>
+      <th class="th-icon">Duplicate</th>
+      <th class="th-icon">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @layouts.each do |ls| %>
+        <tr>
+          <td><span class="icon-folder"></span><%= link_to ls["name"], edit_layout_path(id: ls["id"]) %></td>
+          <td><span><%= ls["width"]%></span></td>
+          <td><span><%= ls["height"]%></span></td>
+          <td class="icon-action"><%= link_to "", edit_layout_path(id: ls["id"]), class: "glyphicon glyphicon-pencil" %></td>
+          <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-play" %></td>
+          <td class="icon-action"><%= link_to "", "#", class: "glyphicon glyphicon-save" %></td>
+          <td class="icon-action"><%= link_to "" , method: :post, class: "fa fa-clone" %></td>
+          <td class="icon-action"><%= link_to "", layout_path(id: ls["id"]), method: :delete, data: {confirm: "Are you sure?" }, remote: true, class: "glyphicon glyphicon-trash" %></td>
+        </tr>
+     <% end %>
+    </tbody>
+    </table>
+    </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+    </div>
+  </div>
+</div>
+
